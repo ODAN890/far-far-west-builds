@@ -3,30 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <title>Tiers</title>
+
   <style>
     body {background:#1c1712;color:#f2e6d0;font-family:Arial;margin:0;}
-    header {padding:20px;background:#241d16;display:flex;justify-content:space-between;}
-    a {color:#f2e6d0;text-decoration:none;margin-left:10px;}
-    .tier {background:#2a2119;margin:20px;padding:20px;border-radius:10px;border:1px solid #5a4630;}
+
+    header {
+      padding:20px 30px;
+      background:#241d16;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    nav {display:flex;gap:12px;}
+
+    nav a {
+      color:#f2e6d0;
+      text-decoration:none;
+      padding:10px 16px;
+      background:#3a2d20;
+      border-radius:10px;
+      font-weight:bold;
+    }
+
+    nav a:hover {background:#d99a4e;color:black;}
+
     h1 {color:#d99a4e;padding:20px;}
+
+    .tier {
+      background:#2a2119;
+      margin:20px;
+      padding:20px;
+      border-radius:10px;
+      border:1px solid #5a4630;
+    }
   </style>
 </head>
+
 <body>
 
 <header>
   <div>Tiers</div>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
+    <a href="tiers.html">Tiers</a>
   </nav>
 </header>
 
 <h1>Tier List</h1>
 
-<div class="tier">S Tier: Overpowered weapons</div>
-<div class="tier">A Tier: Strong weapons</div>
-<div class="tier">B Tier: Balanced weapons</div>
-<div class="tier">D Tier: Weak weapons</div>
+<div class="tier">S Tier</div>
+<div class="tier">A Tier</div>
+<div class="tier">B Tier</div>
+<div class="tier">D Tier</div>
 
 </body>
 </html>
