@@ -192,7 +192,18 @@
       height: calc(100vh - 80px);
     }
 
-    .hero h1 {
+    .hero-content {
+      position: absolute;
+      top: 12vh;
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .hero-content h1 {
       font-family: 'Cinzel Decorative', cursive;
       font-size: 90px;
       font-weight: 900;
@@ -200,9 +211,6 @@
       color: #d99a4e;
       text-align: center;
       letter-spacing: 4px;
-      width: 100%;
-      position: absolute;
-      top: 18vh;
       animation: glowPulse 3s ease-in-out infinite;
     }
 
@@ -227,6 +235,49 @@
           0 0 48px rgba(217,154,78,0.1);
       }
     }
+
+    .hero-desc {
+      max-width: 600px;
+      text-align: center;
+      font-size: 16px;
+      color: #c9b99a;
+      line-height: 1.7;
+      margin: 0;
+      text-shadow: 0 0 12px rgba(0,0,0,0.8);
+    }
+
+    .hero-desc span {
+      color: #d99a4e;
+      font-weight: bold;
+    }
+
+    .unlock-btn {
+      margin-top: 6px;
+      padding: 14px 36px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #000;
+      background: #d99a4e;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.25s;
+      box-shadow:
+        0 0 18px rgba(217,154,78,0.4),
+        0 0 36px rgba(217,154,78,0.15);
+    }
+
+    .unlock-btn:hover {
+      background: #f0b96a;
+      box-shadow:
+        0 0 28px rgba(217,154,78,0.7),
+        0 0 56px rgba(217,154,78,0.3);
+      transform: scale(1.04);
+    }
   </style>
 </head>
 <body>
@@ -250,12 +301,20 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
-    <a href="tiers.html">Tires</a>
+    <a href="tiers.html">Tiers</a>
   </nav>
 </header>
 
 <div class="hero">
-  <h1>Far Far West Builds</h1>
+  <div class="hero-content">
+    <h1>Far Far West Builds</h1>
+    <p class="hero-desc">
+      Far Far West — это дикий запад, где каждый выбор оружия решает исход боя.
+      Лучшие билды, тир-листы и стратегии собраны в одном месте.
+      <span>Этот сайт — то, что вы искали.</span>
+    </p>
+    <a href="tiers.html" class="unlock-btn">UNLOCK META</a>
+  </div>
 </div>
 
 <script>
