@@ -37,6 +37,7 @@
       z-index: -1;
     }
 
+    /* TOP BAR (НЕ ТРОГАЕМ ЛОГИКУ) */
     header {
       padding: 18px 30px;
       background: #000;
@@ -83,12 +84,29 @@
       margin: 30px 20px 10px;
     }
 
+    /* CARDS */
     .card {
       margin: 20px;
       padding: 20px;
       background: rgba(0,0,0,0.6);
       border: 1px solid #5a4630;
       border-radius: 12px;
+
+      opacity: 0;
+      transform: translateX(-60px);
+      animation: slideIn 0.6s ease forwards;
+    }
+
+    /* stagger animation */
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
   </style>
 </head>
