@@ -37,7 +37,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255,170,70,0.2);
       position: relative;
     }
 
@@ -46,10 +45,9 @@
       color: #ffab3d;
       font-size: 26px;
       font-weight: 800;
-      white-space: nowrap;
     }
 
-    /* SEARCH CENTER */
+    /* SEARCH */
     .search-wrapper {
       position: absolute;
       left: 50%;
@@ -59,17 +57,14 @@
 
     .search-wrapper input {
       width: 100%;
-      padding: 10px 12px;
-
+      padding: 10px;
       background: #2a2a2a;
       border: 1px solid #666;
       border-radius: 10px;
-
       color: white;
       outline: none;
     }
 
-    /* DROPDOWN */
     .results {
       position: absolute;
       top: 42px;
@@ -77,14 +72,12 @@
       background: rgba(20,20,20,0.95);
       border: 1px solid #555;
       border-radius: 10px;
-      overflow: hidden;
       display: none;
     }
 
     .result-item {
       padding: 10px;
       cursor: pointer;
-      border-bottom: 1px solid #333;
     }
 
     .result-item:hover {
@@ -103,20 +96,11 @@
       padding: 10px 14px;
       border: 1px solid #777;
       border-radius: 10px;
-      background: rgba(30,30,30,0.6);
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      background: #ffab3d;
-      color: black;
-      border-color: #ffab3d;
     }
 
     .hero {
       height: calc(100vh - 80px);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
@@ -124,10 +108,39 @@
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 74px;
-      margin: 0;
       color: #ffab3d;
-      text-shadow: 0 0 25px rgba(255,171,61,0.5);
     }
+
+    /* 🌵 CACTUS */
+    .cactus {
+      position: fixed;
+      left: 50%;
+      top: 0;
+
+      width: 50px;
+      height: 70px;
+
+      background: #0f3d2e;
+      border-radius: 20px 20px 10px 10px;
+
+      box-shadow: 0 0 12px rgba(0,255,180,0.35);
+
+      z-index: 9999;
+      cursor: pointer;
+    }
+
+    .cactus::before,
+    .cactus::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 20px;
+      background: #0f3d2e;
+      border-radius: 4px;
+    }
+
+    .cactus::before { left: -6px; top: 20px; }
+    .cactus::after { right: -6px; top: 30px; }
   </style>
 </head>
 
@@ -137,10 +150,8 @@
 <div class="overlay"></div>
 
 <header>
-
   <div class="logo">FAR FAR WEST BUILDS</div>
 
-  <!-- SEARCH -->
   <div class="search-wrapper">
     <input id="search" placeholder="Search builds or tiers...">
     <div class="results" id="results"></div>
@@ -151,20 +162,21 @@
     <a href="builds.html">Builds</a>
     <a href="tiers.html">Tires</a>
   </nav>
-
 </header>
 
 <div class="hero">
   <h1>Far Far West Builds</h1>
 </div>
 
+<!-- 🌵 CACTUS -->
+<div class="cactus" id="cactus"></div>
+
 <script>
+/* SEARCH */
 const data = [
   { name: "Dust Reaper Build", link: "builds.html" },
   { name: "Gunslinger Build", link: "builds.html" },
-  { name: "S Tier List", link: "tiers.html" },
-  { name: "A Tier List", link: "tiers.html" },
-  { name: "B Tier List", link: "tiers.html" }
+  { name: "S Tier", link: "tiers.html" }
 ];
 
 const input = document.getElementById("search");
@@ -174,33 +186,48 @@ input.addEventListener("input", () => {
   const value = input.value.toLowerCase();
   results.innerHTML = "";
 
-  if (!value) {
-    results.style.display = "none";
-    return;
-  }
+  if (!value) return results.style.display = "none";
 
-  const filtered = data.filter(item =>
-    item.name.toLowerCase().includes(value)
-  );
+  const filtered = data.filter(i => i.name.toLowerCase().includes(value));
 
-  if (filtered.length === 0) {
-    results.style.display = "none";
-    return;
-  }
-
-  filtered.forEach(item => {
+  filtered.forEach(i => {
     const div = document.createElement("div");
     div.className = "result-item";
-    div.textContent = item.name;
-
-    div.onclick = () => {
-      window.location.href = item.link;
-    };
-
+    div.textContent = i.name;
+    div.onclick = () => location.href = i.link;
     results.appendChild(div);
   });
 
   results.style.display = "block";
+});
+
+/* CACTUS PHYSICS */
+const cactus = document.getElementById("cactus");
+
+let y = 0;
+let v = 0;
+const g = 0.6;
+const bounce = 0.65;
+const ground = window.innerHeight - 100;
+
+function loop() {
+  v += g;
+  y += v;
+
+  if (y > ground) {
+    y = ground;
+    v *= -bounce;
+  }
+
+  cactus.style.transform = `translateY(${y}px)`;
+
+  requestAnimationFrame(loop);
+}
+
+loop();
+
+cactus.addEventListener("click", () => {
+  v -= 10;
 });
 </script>
 
