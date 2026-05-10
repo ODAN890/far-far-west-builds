@@ -32,43 +32,41 @@
       z-index: -1;
     }
 
-    /* HEADER */
+    /* HEADER (КАК В BUILDS — БОЛЬШАЯ ПАНЕЛЬ) */
     header {
-      padding: 18px 32px;
+      padding: 20px 32px;
       background: rgba(0,0,0,0.92);
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: relative;
-      border-bottom: 1px solid rgba(255,171,61,0.15);
+      border-bottom: 1px solid rgba(255,171,61,0.2);
     }
 
-    /* LEFT LOGO (ВОССТАНОВЛЕНО СВЕЧЕНИЕ) */
+    /* LEFT LOGO (КАК В BUILDS — БОЛЬШЕ + ГЛОУ) */
     .logo {
       font-family: 'Orbitron', sans-serif;
       color: #ffab3d;
-      font-size: 26px;
+      font-size: 30px; /* увеличено как в Builds */
       font-weight: 800;
 
       text-shadow:
-        0 0 8px rgba(255,171,61,0.6),
-        0 0 20px rgba(255,140,0,0.4);
-
-      letter-spacing: 1px;
+        0 0 10px rgba(255,171,61,0.7),
+        0 0 25px rgba(255,140,0,0.5);
     }
 
-    /* NAV */
+    /* NAV (КАК В BUILDS — КРУПНЕЕ) */
     nav {
       display: flex;
-      gap: 18px;
+      gap: 20px;
     }
 
     nav a {
       color: #f2e6d0;
       text-decoration: none;
 
-      padding: 12px 18px;
-      font-size: 15px;
+      padding: 14px 20px;
+      font-size: 16px;
 
       border: 1px solid #777;
       border-radius: 12px;
@@ -82,7 +80,6 @@
       background: rgba(255,171,61,0.85);
       color: black;
       border-color: #ffab3d;
-      transform: translateY(-1px);
     }
 
     /* SEARCH */
@@ -131,19 +128,20 @@
       align-items: center;
       flex-direction: column;
 
-      /* поднимаем центральный текст */
-      transform: translateY(-30px);
+      transform: translateY(-20px);
     }
 
-    /* ЦЕНТР (БЕЗ СВЕЧЕНИЯ) */
+    /* ЦЕНТР — ВОЗВРАЩАЕМ ЦВЕТ + ДОБАВЛЯЕМ GLOW */
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 74px;
       margin: 0;
-      color: #d8c6a8;
 
-      text-shadow: none;
-      opacity: 0.95;
+      color: #ffab3d; /* НЕ МЕНЯЕМ ЦВЕТ */
+
+      text-shadow:
+        0 0 12px rgba(255,171,61,0.6),
+        0 0 28px rgba(255,140,0,0.4);
     }
   </style>
 </head>
@@ -155,16 +153,13 @@
 
 <header>
 
-  <!-- LEFT LOGO -->
   <div class="logo">FAR FAR WEST BUILDS</div>
 
-  <!-- SEARCH -->
   <div class="search-wrapper">
     <input id="search" placeholder="Search builds or tiers...">
     <div class="results" id="results"></div>
   </div>
 
-  <!-- NAV -->
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
@@ -173,7 +168,6 @@
 
 </header>
 
-<!-- HERO -->
 <div class="hero">
   <h1>Far Far West Builds</h1>
 </div>
@@ -182,9 +176,7 @@
 const data = [
   { name: "Dust Reaper Build", link: "builds.html" },
   { name: "Gunslinger Build", link: "builds.html" },
-  { name: "S Tier", link: "tiers.html" },
-  { name: "A Tier", link: "tiers.html" },
-  { name: "B Tier", link: "tiers.html" }
+  { name: "S Tier", link: "tiers.html" }
 ];
 
 const input = document.getElementById("search");
