@@ -1,63 +1,292 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Tiers</title>
 
-  <style>
-    body {background:#1c1712;color:#f2e6d0;font-family:Arial;margin:0;}
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
 
-    header {
-      padding:20px 30px;
-      background:#241d16;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #000;
+      color: #ffe9dd;
+      overflow-x: hidden;
     }
 
-    nav {display:flex;gap:12px;}
+    /* BACKGROUND */
+    .bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      background: url('saloon.png') center/cover no-repeat;
+
+      filter: brightness(0.52) blur(3px);
+
+      transform: scale(1.04);
+
+      z-index: -2;
+    }
+
+    /* MALINO-PESOCHNIY OVERLAY */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,110,140,0.06),
+          rgba(0,0,0,0.76)
+        );
+
+      z-index: -1;
+    }
+
+    /* TOP PANEL */
+    header {
+      padding: 18px 30px;
+
+      background: rgba(0,0,0,0.92);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      border-bottom: 1px solid rgba(255,120,160,0.22);
+
+      backdrop-filter: blur(8px);
+    }
+
+    /* LOGO */
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+
+      color: #ff8db3;
+
+      font-weight: 800;
+
+      font-size: 28px;
+
+      letter-spacing: 2px;
+
+      text-shadow:
+        0 0 8px rgba(255,141,179,0.55),
+        0 0 20px rgba(255,141,179,0.25),
+        0 0 36px rgba(255,141,179,0.12);
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      gap: 16px;
+    }
 
     nav a {
-      color:#f2e6d0;
-      text-decoration:none;
-      padding:10px 16px;
-      background:#3a2d20;
-      border-radius:10px;
-      font-weight:bold;
+      color: #ffe9dd;
+
+      text-decoration: none;
+
+      padding: 14px 22px;
+
+      background: rgba(25,18,20,0.78);
+
+      border: 1px solid rgba(255,220,200,0.75);
+
+      border-radius: 12px;
+
+      font-weight: bold;
+      font-size: 16px;
+
+      transition: 0.25s;
     }
 
-    nav a:hover {background:#d99a4e;color:black;}
+    nav a:hover {
+      background: #ff8db3;
+      color: black;
 
-    h1 {color:#d99a4e;padding:20px;}
+      border-color: #ff8db3;
 
-    .tier {
-      background:#2a2119;
-      margin:20px;
-      padding:20px;
-      border-radius:10px;
-      border:1px solid #5a4630;
+      box-shadow:
+        0 0 16px rgba(255,141,179,0.45);
+    }
+
+    /* TITLE */
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+
+      font-size: 58px;
+
+      margin: 35px 20px 10px;
+
+      color: #ff8db3;
+
+      letter-spacing: 2px;
+
+      text-shadow:
+        0 0 10px rgba(255,141,179,0.65),
+        0 0 24px rgba(255,141,179,0.28);
+
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0% {
+        text-shadow:
+          0 0 10px rgba(255,141,179,0.55),
+          0 0 20px rgba(255,141,179,0.22);
+      }
+
+      50% {
+        text-shadow:
+          0 0 18px rgba(255,141,179,0.9),
+          0 0 36px rgba(255,141,179,0.45);
+      }
+
+      100% {
+        text-shadow:
+          0 0 10px rgba(255,141,179,0.55),
+          0 0 20px rgba(255,141,179,0.22);
+      }
+    }
+
+    /* CONTAINER */
+    .container {
+      display: flex;
+      flex-direction: column;
+
+      gap: 18px;
+
+      padding: 10px 20px 40px;
+    }
+
+    /* TIER CARDS */
+    .tier-card {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(30,15,18,0.84),
+          rgba(12,8,8,0.72)
+        );
+
+      border: 1px solid rgba(255,141,179,0.35);
+
+      border-radius: 14px;
+
+      padding: 20px;
+
+      box-shadow:
+        0 0 18px rgba(255,141,179,0.08);
+
+      opacity: 0;
+
+      transform: translateX(-60px);
+
+      animation: slideIn 0.5s ease forwards;
+    }
+
+    .tier-card:nth-child(1) {
+      animation-delay: 0.15s;
+    }
+
+    .tier-card:nth-child(2) {
+      animation-delay: 0.30s;
+    }
+
+    .tier-card:nth-child(3) {
+      animation-delay: 0.45s;
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .tier-card h2 {
+      margin: 0;
+
+      color: #ffb58d;
+
+      font-family: 'Orbitron', sans-serif;
+
+      font-size: 26px;
+    }
+
+    .tier-card p {
+      margin-top: 10px;
+
+      color: #ffe9dd;
+
+      font-size: 15px;
+    }
+
+    .tier-tag {
+      display: inline-block;
+
+      margin-top: 12px;
+
+      padding: 7px 12px;
+
+      border-radius: 8px;
+
+      border: 1px solid rgba(255,181,141,0.55);
+
+      color: #ffb58d;
+
+      background: rgba(255,181,141,0.06);
+
+      font-size: 12px;
     }
   </style>
 </head>
 
 <body>
 
+<div class="bg"></div>
+<div class="overlay"></div>
+
 <header>
-  <div>Tiers</div>
+  <div class="logo">FAR FAR WEST BUILDS</div>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
-    <a href="tiers.html">Tiers</a>
+    <a href="tiers.html">Tires</a>
   </nav>
 </header>
 
-<h1>Tier List</h1>
+<h1>Tiers</h1>
 
-<div class="tier">S Tier</div>
-<div class="tier">A Tier</div>
-<div class="tier">B Tier</div>
-<div class="tier">D Tier</div>
+<div class="container">
+
+  <div class="tier-card">
+    <h2>S Tier</h2>
+    <p>Meta-defining weapons with the strongest performance.</p>
+    <span class="tier-tag">Top Meta</span>
+  </div>
+
+  <div class="tier-card">
+    <h2>A Tier</h2>
+    <p>Reliable and powerful builds for most encounters.</p>
+    <span class="tier-tag">Strong Choice</span>
+  </div>
+
+  <div class="tier-card">
+    <h2>B Tier</h2>
+    <p>Situational weapons with decent performance.</p>
+    <span class="tier-tag">Balanced</span>
+  </div>
+
+</div>
 
 </body>
 </html>
