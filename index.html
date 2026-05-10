@@ -52,7 +52,6 @@
       flex-shrink: 0;
     }
 
-    /* SEARCH */
     .search-wrapper {
       position: absolute;
       left: 50%;
@@ -189,22 +188,24 @@
 
     /* БИН */
     .hero {
-      height: 100vh;
+      height: calc(100vh - 80px);
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       flex-direction: column;
-      padding-bottom: 12vh;
+      padding-top: 8vh;
+      padding-left: 0;
     }
 
     .hero h1 {
       font-family: 'Cinzel Decorative', cursive;
-      font-size: 72px;
+      font-size: 90px;
       font-weight: 900;
-      margin: 0;
+      margin: 0 auto;
       color: #d99a4e;
       text-align: center;
       letter-spacing: 4px;
+      width: 100%;
       animation: glowPulse 3s ease-in-out infinite;
     }
 
