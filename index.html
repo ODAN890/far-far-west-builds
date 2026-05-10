@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
@@ -15,9 +13,6 @@
       overflow: hidden;
     }
 
-    /* ======================
-       BACKGROUND (ВОЗВРАЩЕНО)
-    ====================== */
     .bg {
       position: fixed;
       inset: 0;
@@ -34,9 +29,6 @@
       z-index: -1;
     }
 
-    /* ======================
-       HEADER (BUILDs + HOME HYBRID, БЕЗ УНИЧТОЖЕНИЯ СТИЛЯ)
-    ====================== */
     header {
       padding: 18px 30px;
       background: #000;
@@ -50,10 +42,8 @@
       font-family: 'Orbitron', sans-serif;
       color: #d99a4e;
       font-weight: 700;
-      font-size: 26px;
+      font-size: 28px;
       letter-spacing: 2px;
-
-      /* ВОЗВРАЩАЕМ GLOW (ты просил) */
       text-shadow:
         0 0 10px rgba(217,154,78,0.6),
         0 0 22px rgba(217,154,78,0.3);
@@ -67,13 +57,10 @@
     nav a {
       color: #f2e6d0;
       text-decoration: none;
-
       padding: 14px 22px;
       background: #121212;
-
       border: 1px solid #f2e6d0;
       border-radius: 12px;
-
       font-weight: bold;
       font-size: 16px;
     }
@@ -84,9 +71,6 @@
       border-color: #d99a4e;
     }
 
-    /* ======================
-       HERO (ВОЗВРАЩЕН ГЛАВНЫЙ ЭФФЕКТ)
-    ====================== */
     .hero {
       height: 100vh;
       display: flex;
@@ -99,35 +83,26 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 74px;
       margin: 0;
-
       color: #d99a4e;
-
-      /* ВОЗВРАЩЕН GLOW */
       text-shadow:
         0 0 12px rgba(217,154,78,0.5),
         0 0 28px rgba(217,154,78,0.3);
     }
   </style>
 </head>
-
 <body>
-
 <div class="bg"></div>
 <div class="overlay"></div>
-
 <header>
   <div class="logo">FAR FAR WEST BUILDS</div>
-
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
     <a href="tiers.html">Tires</a>
   </nav>
 </header>
-
 <div class="hero">
   <h1>Far Far West Builds</h1>
 </div>
-
 </body>
 </html>
