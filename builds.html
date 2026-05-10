@@ -11,7 +11,7 @@
       margin: 0;
       font-family: Arial;
       background: #000;
-      color: #f2e6d0;
+      color: #dffefe;
       overflow-x: hidden;
     }
 
@@ -23,16 +23,18 @@
       width: 100%;
       height: 100%;
 
-      /* NO ZOOM */
-      background: url('polarsaloon.png') center center / contain no-repeat;
+      /* ZOOM BACK */
+      background: url('polarsaloon.png') center/cover no-repeat;
 
-      /* LESS DARK + SOFT BLUR */
-      filter: brightness(0.58) blur(2px);
+      /* BRIGHTER */
+      filter: brightness(0.62) blur(3px);
+
+      transform: scale(1.05);
 
       z-index: -2;
     }
 
-    /* LIGHTER OVERLAY */
+    /* TURQUOISE OVERLAY */
     .overlay {
       position: fixed;
       top: 0;
@@ -40,11 +42,12 @@
       width: 100%;
       height: 100%;
 
-      background: radial-gradient(
-        circle at center,
-        rgba(0,0,0,0.05),
-        rgba(0,0,0,0.68)
-      );
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(0, 255, 220, 0.06),
+          rgba(0,0,0,0.72)
+        );
 
       z-index: -1;
     }
@@ -52,19 +55,30 @@
     /* TOP PANEL */
     header {
       padding: 18px 30px;
-      background: #000;
+      background: rgba(0,0,0,0.92);
+
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #2a2a2a;
+
+      border-bottom: 1px solid rgba(0,255,220,0.25);
+
+      backdrop-filter: blur(8px);
     }
 
     .logo {
       font-family: 'Orbitron', sans-serif;
-      color: #d99a4e;
+
+      color: #63fff2;
+
       font-weight: 700;
-      font-size: 26px;
+      font-size: 28px;
+
       letter-spacing: 2px;
+
+      text-shadow:
+        0 0 8px rgba(99,255,242,0.5),
+        0 0 18px rgba(99,255,242,0.2);
     }
 
     nav {
@@ -73,53 +87,80 @@
     }
 
     nav a {
-      color: #f2e6d0;
+      color: #dffefe;
+
       text-decoration: none;
+
       padding: 14px 22px;
-      background: #121212;
-      border: 1px solid #f2e6d0;
+
+      background: rgba(10,20,20,0.7);
+
+      border: 1px solid rgba(99,255,242,0.55);
+
       border-radius: 12px;
+
       font-weight: bold;
       font-size: 16px;
+
+      transition: 0.25s;
     }
 
     nav a:hover {
-      background: #d99a4e;
+      background: #63fff2;
       color: black;
-      border-color: #d99a4e;
+
+      box-shadow:
+        0 0 14px rgba(99,255,242,0.6);
     }
 
     /* TITLE */
     h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 52px;
-      margin: 30px 20px 10px;
-      color: #d99a4e;
+
+      font-size: 56px;
+
+      margin: 35px 20px 15px;
+
+      color: #63fff2;
+
       letter-spacing: 2px;
+
+      text-shadow:
+        0 0 12px rgba(99,255,242,0.45),
+        0 0 28px rgba(99,255,242,0.15);
     }
 
-    /* BUILD CONTAINER */
+    /* CONTAINER */
     .container {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+
+      gap: 18px;
+
       padding: 10px 20px 40px;
     }
 
     /* BUILD CARDS */
     .card {
-      background: linear-gradient(
-        145deg,
-        rgba(20,20,20,0.82),
-        rgba(10,10,10,0.70)
-      );
+      background:
+        linear-gradient(
+          145deg,
+          rgba(5,18,20,0.82),
+          rgba(0,0,0,0.72)
+        );
 
-      border: 1px solid rgba(217,154,78,0.35);
+      border: 1px solid rgba(99,255,242,0.35);
+
       border-radius: 14px;
-      padding: 18px 20px;
+
+      padding: 20px;
+
+      box-shadow:
+        0 0 18px rgba(99,255,242,0.08);
 
       opacity: 0;
       transform: translateX(-60px);
+
       animation: slideIn 0.5s ease forwards;
     }
 
@@ -140,23 +181,41 @@
 
     .card h2 {
       margin: 0;
-      color: #d99a4e;
+
+      color: #63fff2;
+
       font-family: 'Orbitron', sans-serif;
-      font-size: 22px;
+
+      font-size: 24px;
+
+      text-shadow:
+        0 0 8px rgba(99,255,242,0.25);
     }
 
     .card p {
-      margin: 6px 0;
-      color: #d6c2a8;
+      margin: 7px 0;
+
+      color: #dffefe;
+
+      font-size: 15px;
     }
 
     .tag {
       display: inline-block;
-      margin-top: 8px;
-      padding: 6px 10px;
+
+      margin-top: 10px;
+
+      padding: 7px 12px;
+
       border-radius: 8px;
-      border: 1px solid #f2e6d0;
+
+      border: 1px solid rgba(99,255,242,0.55);
+
+      color: #63fff2;
+
       font-size: 12px;
+
+      background: rgba(0,255,220,0.05);
     }
   </style>
 </head>
