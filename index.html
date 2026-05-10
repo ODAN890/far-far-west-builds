@@ -15,6 +15,7 @@
       overflow: hidden;
     }
 
+    /* BACKGROUND */
     .bg {
       position: fixed;
       inset: 0;
@@ -31,7 +32,7 @@
       z-index: -1;
     }
 
-    /* ===== HEADER (СИНХРОНИЗИРОВАН С BUILDS/TIERS) ===== */
+    /* ===== HEADER (СИНХРОНИЗАЦИЯ С BUILDS/TIERS) ===== */
     header {
       padding: 16px 24px;
       background: rgba(0,0,0,0.92);
@@ -70,7 +71,6 @@
 
       background: rgba(30,30,30,0.6);
 
-      transition: 0.2s;
       font-weight: bold;
     }
 
@@ -78,7 +78,44 @@
       background: rgba(255,171,61,0.85);
       color: black;
       border-color: #ffab3d;
-      transform: translateY(-1px);
+    }
+
+    /* ===== SEARCH (ВОЗВРАЩЕНО) ===== */
+    .search-wrapper {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+    }
+
+    .search-wrapper input {
+      width: 100%;
+      padding: 10px 12px;
+      background: #2a2a2a;
+      border: 1px solid #666;
+      border-radius: 10px;
+      color: white;
+      outline: none;
+    }
+
+    .results {
+      position: absolute;
+      top: 42px;
+      width: 100%;
+      background: rgba(20,20,20,0.95);
+      border: 1px solid #555;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .result-item {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .result-item:hover {
+      background: #ffab3d;
+      color: black;
     }
 
     /* ===== HERO ===== */
@@ -88,8 +125,11 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+
+      transform: translateY(-20px);
     }
 
+    /* ГЛАВНАЯ НАДПИСЬ (БЕЗ ЛИШНИХ ТЕКСТОВ ВНИЗУ) */
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 74px;
@@ -100,11 +140,6 @@
       text-shadow:
         0 0 12px rgba(255,171,61,0.6),
         0 0 28px rgba(255,140,0,0.4);
-    }
-
-    .hero p {
-      margin-top: 10px;
-      opacity: 0.8;
     }
   </style>
 </head>
@@ -118,18 +153,61 @@
 
   <div class="logo">FAR FAR WEST BUILDS</div>
 
+  <!-- SEARCH -->
+  <div class="search-wrapper">
+    <input id="search" placeholder="Search builds or tiers...">
+    <div class="results" id="results"></div>
+  </div>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
-    <a href="tiers.html">Tiers</a>
+    <a href="tiers.html">Tires</a>
   </nav>
 
 </header>
 
 <div class="hero">
+  <!-- ВАЖНО: НИКАКИХ ДОПОЛНИТЕЛЬНЫХ НАДПИСЕЙ ТУТ НЕТ -->
   <h1>Far Far West Builds</h1>
-  <p>Weapon builds and tier lists for the Wild West future</p>
 </div>
+
+<script>
+const data = [
+  { name: "Dust Reaper Build", link: "builds.html" },
+  { name: "Gunslinger Build", link: "builds.html" },
+  { name: "S Tier", link: "tiers.html" },
+  { name: "A Tier", link: "tiers.html" },
+  { name: "B Tier", link: "tiers.html" }
+];
+
+const input = document.getElementById("search");
+const results = document.getElementById("results");
+
+input.addEventListener("input", () => {
+  const value = input.value.toLowerCase();
+  results.innerHTML = "";
+
+  if (!value) {
+    results.style.display = "none";
+    return;
+  }
+
+  const filtered = data.filter(item =>
+    item.name.toLowerCase().includes(value)
+  );
+
+  filtered.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "result-item";
+    div.textContent = item.name;
+    div.onclick = () => location.href = item.link;
+    results.appendChild(div);
+  });
+
+  results.style.display = filtered.length ? "block" : "none";
+});
+</script>
 
 </body>
 </html>
