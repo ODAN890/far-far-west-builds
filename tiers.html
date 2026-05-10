@@ -22,7 +22,7 @@
       width: 100%;
       height: 100%;
       background: url('saloonmount.png') center/cover no-repeat;
-      filter: brightness(0.52) blur(3px);
+      filter: brightness(0.68) blur(3px);
       transform: scale(1.04);
       z-index: -2;
     }
@@ -49,6 +49,8 @@
       align-items: center;
       border-bottom: 1px solid rgba(255,120,160,0.22);
       backdrop-filter: blur(8px);
+      position: relative;
+      z-index: 100;
     }
 
     .logo {
@@ -61,11 +63,124 @@
         0 0 8px rgba(255,141,179,0.55),
         0 0 20px rgba(255,141,179,0.25),
         0 0 36px rgba(255,141,179,0.12);
+      flex-shrink: 0;
+    }
+
+    /* SEARCH */
+    .search-wrapper {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 340px;
+      z-index: 101;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 16px;
+      background: #1a1a1a;
+      border: 1px solid #3a3a3a;
+      border-radius: 10px;
+      color: #e0e0e0;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input::placeholder {
+      color: #666;
+    }
+
+    .search-input:focus {
+      border-color: #555;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+    }
+
+    .search-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: #111;
+      border: 1px solid #2e2e2e;
+      border-radius: 10px;
+      overflow: hidden;
+      display: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      z-index: 200;
+    }
+
+    .search-dropdown.visible {
+      display: block;
+    }
+
+    .dropdown-item {
+      padding: 12px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #1e1e1e;
+      transition: background 0.15s;
+    }
+
+    .dropdown-item:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item.active {
+      background: #222;
+    }
+
+    .dropdown-item .item-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: #e0e0e0;
+      margin-bottom: 2px;
+    }
+
+    .dropdown-item .item-name mark {
+      background: transparent;
+      color: #d99a4e;
+      font-weight: bold;
+    }
+
+    .dropdown-item .item-meta {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .dropdown-item .item-source {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: #1e1e1e;
+      border: 1px solid #333;
+      color: #999;
+    }
+
+    .dropdown-item .item-source.builds {
+      color: #63fff2;
+      border-color: rgba(99,255,242,0.3);
+    }
+
+    .dropdown-item .item-source.tiers {
+      color: #ff8db3;
+      border-color: rgba(255,141,179,0.3);
+    }
+
+    .dropdown-empty {
+      padding: 14px 16px;
+      color: #555;
+      font-size: 13px;
+      text-align: center;
     }
 
     nav {
       display: flex;
       gap: 16px;
+      flex-shrink: 0;
     }
 
     nav a {
@@ -180,6 +295,18 @@
 
 <header>
   <div class="logo">FAR FAR WEST BUILDS</div>
+
+  <div class="search-wrapper">
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Search builds, tiers..."
+      id="searchInput"
+      autocomplete="off"
+    />
+    <div class="search-dropdown" id="searchDropdown"></div>
+  </div>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
@@ -210,6 +337,147 @@
   </div>
 
 </div>
+
+<script>
+  const data = [
+    {
+      name: "Dust Reaper",
+      details: "Weapon: Repeater Rifle · Playstyle: Mid-range burst damage",
+      tag: "Tier: S",
+      source: "builds",
+      page: "builds.html"
+    },
+    {
+      name: "Gunslinger",
+      details: "Weapon: Dual Revolvers · Playstyle: Fast close combat DPS",
+      tag: "Tier: A",
+      source: "builds",
+      page: "builds.html"
+    },
+    {
+      name: "S Tier",
+      details: "Meta-defining weapons with the strongest performance.",
+      tag: "Top Meta",
+      source: "tiers",
+      page: "tiers.html"
+    },
+    {
+      name: "A Tier",
+      details: "Reliable and powerful builds for most encounters.",
+      tag: "Strong Choice",
+      source: "tiers",
+      page: "tiers.html"
+    },
+    {
+      name: "B Tier",
+      details: "Situational weapons with decent performance.",
+      tag: "Balanced",
+      source: "tiers",
+      page: "tiers.html"
+    }
+  ];
+
+  const input = document.getElementById('searchInput');
+  const dropdown = document.getElementById('searchDropdown');
+  let activeIndex = -1;
+  let currentResults = [];
+
+  function highlight(text, query) {
+    if (!query) return text;
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+  }
+
+  function search(query) {
+    if (!query.trim()) return [];
+    const q = query.toLowerCase();
+    return data.filter(item =>
+      item.name.toLowerCase().includes(q) ||
+      item.details.toLowerCase().includes(q) ||
+      item.tag.toLowerCase().includes(q)
+    );
+  }
+
+  function renderDropdown(query) {
+    activeIndex = -1;
+    currentResults = search(query);
+    dropdown.innerHTML = '';
+
+    if (!query.trim()) {
+      dropdown.classList.remove('visible');
+      return;
+    }
+
+    if (currentResults.length === 0) {
+      dropdown.innerHTML = `<div class="dropdown-empty">No results for "${query}"</div>`;
+      dropdown.classList.add('visible');
+      return;
+    }
+
+    currentResults.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'dropdown-item';
+      div.dataset.index = i;
+      div.innerHTML = `
+        <div class="item-name">${highlight(item.name, query)}</div>
+        <div class="item-meta">${highlight(item.details, query)}</div>
+        <span class="item-source ${item.source}">${item.source === 'builds' ? 'Builds' : 'Tiers'} · ${highlight(item.tag, query)}</span>
+      `;
+      div.addEventListener('mousedown', () => {
+        window.location.href = item.page;
+      });
+      div.addEventListener('mouseover', () => {
+        setActive(i);
+      });
+      dropdown.appendChild(div);
+    });
+
+    dropdown.classList.add('visible');
+  }
+
+  function setActive(index) {
+    const items = dropdown.querySelectorAll('.dropdown-item');
+    items.forEach(el => el.classList.remove('active'));
+    if (index >= 0 && index < items.length) {
+      items[index].classList.add('active');
+      activeIndex = index;
+    }
+  }
+
+  input.addEventListener('input', () => {
+    renderDropdown(input.value);
+  });
+
+  input.addEventListener('keydown', (e) => {
+    const items = dropdown.querySelectorAll('.dropdown-item');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActive(Math.min(activeIndex + 1, items.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActive(Math.max(activeIndex - 1, 0));
+    } else if (e.key === 'Enter') {
+      if (activeIndex >= 0 && currentResults[activeIndex]) {
+        window.location.href = currentResults[activeIndex].page;
+      }
+    } else if (e.key === 'Escape') {
+      dropdown.classList.remove('visible');
+      input.blur();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-wrapper')) {
+      dropdown.classList.remove('visible');
+    }
+  });
+
+  input.addEventListener('focus', () => {
+    if (input.value.trim()) {
+      renderDropdown(input.value);
+    }
+  });
+</script>
 
 </body>
 </html>
