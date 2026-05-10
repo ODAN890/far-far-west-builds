@@ -37,8 +37,9 @@
       z-index: -1;
     }
 
+    /* MAIN TOP BAR */
     header {
-      padding: 20px 30px;
+      padding: 18px 30px;
       background: #000;
       display: flex;
       justify-content: space-between;
@@ -46,25 +47,30 @@
       border-bottom: 1px solid #2a2a2a;
     }
 
+    /* TOP TITLE (NOW BIGGER + SAME FONT) */
     .logo {
+      font-family: 'Orbitron', sans-serif;
       color: #d99a4e;
-      font-weight: bold;
+      font-weight: 700;
+      font-size: 26px;
+      letter-spacing: 2px;
     }
 
     nav {
       display: flex;
-      gap: 14px;
+      gap: 16px;
     }
 
+    /* BIGGER BUTTONS */
     nav a {
       color: #f2e6d0;
       text-decoration: none;
-      padding: 12px 18px;
+      padding: 14px 22px;
       background: #1a1a1a;
       border: 1px solid #f2e6d0;
       border-radius: 12px;
       font-weight: bold;
-      font-size: 15px;
+      font-size: 16px;
     }
 
     nav a:hover {
@@ -78,7 +84,6 @@
       padding: 150px 20px;
     }
 
-    /* MAIN TITLE */
     h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 64px;
@@ -99,7 +104,6 @@
       animation: glow 2.5s ease-in-out infinite;
     }
 
-    /* ANIMATED GLOW */
     @keyframes glow {
       0% {
         filter: drop-shadow(0 0 6px rgba(217,154,78,0.35))
@@ -162,7 +166,7 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
-    <a href="tiers.html">Tiers</a>
+    <a href="tiers.html">Tires</a>
   </nav>
 </header>
 
