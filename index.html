@@ -15,6 +15,7 @@
       overflow: hidden;
     }
 
+    /* BACKGROUND */
     .bg {
       position: fixed;
       inset: 0;
@@ -39,15 +40,21 @@
       align-items: center;
       justify-content: space-between;
       position: relative;
+      border-bottom: 1px solid rgba(255,171,61,0.15);
     }
 
-    /* LOGO (спокойный, без свечения) */
+    /* LEFT LOGO (ВОССТАНОВЛЕНО СВЕЧЕНИЕ) */
     .logo {
       font-family: 'Orbitron', sans-serif;
-      color: #d8c6a8;
-      font-size: 22px;
-      font-weight: 600;
-      opacity: 0.9;
+      color: #ffab3d;
+      font-size: 26px;
+      font-weight: 800;
+
+      text-shadow:
+        0 0 8px rgba(255,171,61,0.6),
+        0 0 20px rgba(255,140,0,0.4);
+
+      letter-spacing: 1px;
     }
 
     /* NAV */
@@ -78,7 +85,7 @@
       transform: translateY(-1px);
     }
 
-    /* SEARCH CENTER */
+    /* SEARCH */
     .search-wrapper {
       position: absolute;
       left: 50%;
@@ -89,11 +96,9 @@
     .search-wrapper input {
       width: 100%;
       padding: 10px 12px;
-
       background: #2a2a2a;
       border: 1px solid #666;
       border-radius: 10px;
-
       color: white;
       outline: none;
     }
@@ -125,13 +130,20 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+
+      /* поднимаем центральный текст */
+      transform: translateY(-30px);
     }
 
+    /* ЦЕНТР (БЕЗ СВЕЧЕНИЯ) */
     .hero h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 74px;
       margin: 0;
-      color: #ffab3d;
+      color: #d8c6a8;
+
+      text-shadow: none;
+      opacity: 0.95;
     }
   </style>
 </head>
@@ -143,6 +155,7 @@
 
 <header>
 
+  <!-- LEFT LOGO -->
   <div class="logo">FAR FAR WEST BUILDS</div>
 
   <!-- SEARCH -->
@@ -151,6 +164,7 @@
     <div class="results" id="results"></div>
   </div>
 
+  <!-- NAV -->
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
@@ -159,6 +173,7 @@
 
 </header>
 
+<!-- HERO -->
 <div class="hero">
   <h1>Far Far West Builds</h1>
 </div>
