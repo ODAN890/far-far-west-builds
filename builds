@@ -1,1 +1,41 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Builds</title>
+  <style>
+    body {background:#1c1712;color:#f2e6d0;font-family:Arial;margin:0;}
+    header {padding:20px;background:#241d16;display:flex;justify-content:space-between;}
+    a {color:#f2e6d0;text-decoration:none;margin-left:10px;}
+    .card {background:#2a2119;margin:20px;padding:20px;border-radius:10px;border:1px solid #5a4630;}
+    h1 {color:#d99a4e;padding:20px;}
+  </style>
+</head>
+<body>
 
+<header>
+  <div>Builds</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="tiers.html">Tiers</a>
+  </nav>
+</header>
+
+<h1>Builds</h1>
+
+<div class="card">
+  <h2>Dust Reaper</h2>
+  <p>Weapon: Repeater Rifle</p>
+  <p>Tier: S</p>
+</div>
+
+<div class="card">
+  <h2>Gunslinger</h2>
+  <p>Weapon: Dual Revolvers</p>
+  <p>Tier: A</p>
+</div>
+
+</body>
+</html>
+```
