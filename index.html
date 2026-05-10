@@ -10,23 +10,33 @@
       font-family: Arial;
       color: #f2e6d0;
       background: #000;
+      overflow-x: hidden;
     }
 
-    /* BACKGROUND IMAGE LAYER */
     .bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') center/cover no-repeat;
-      filter: brightness(0.35);
+      background: url('saloon.png') center/cover no-repeat;
+      filter: brightness(0.45) contrast(1.1);
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
       z-index: -1;
     }
 
     header {
       padding: 20px 30px;
-      background: rgba(36, 29, 22, 0.85);
+      background: rgba(36, 29, 22, 0.75);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -36,7 +46,6 @@
     .logo {
       color: #d99a4e;
       font-weight: bold;
-      font-size: 18px;
     }
 
     nav {
@@ -60,13 +69,12 @@
 
     .hero {
       text-align: center;
-      padding: 140px 20px;
+      padding: 150px 20px;
     }
 
     h1 {
-      font-size: 60px;
+      font-size: 64px;
       color: #d99a4e;
-      margin-bottom: 10px;
     }
 
     p {
@@ -75,19 +83,17 @@
     }
 
     .buttons {
-      margin-top: 30px;
+      margin-top: 25px;
       display: flex;
       justify-content: center;
       gap: 15px;
     }
 
     .btn {
-      padding: 14px 22px;
+      padding: 14px 24px;
       border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
-      transition: 0.2s;
     }
 
     .btn-primary {
@@ -101,7 +107,6 @@
     }
 
     .btn:hover {
-      transform: scale(1.05);
       opacity: 0.9;
     }
   </style>
@@ -110,6 +115,7 @@
 <body>
 
 <div class="bg"></div>
+<div class="overlay"></div>
 
 <header>
   <div class="logo">FAR FAR WEST BUILDS</div>
