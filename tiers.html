@@ -103,7 +103,6 @@
 
     .dropdown-item:last-child { border-bottom: none; }
     .dropdown-item:hover, .dropdown-item.active { background: #222; }
-
     .dropdown-item .item-name { font-size: 14px; font-weight: bold; color: #e0e0e0; margin-bottom: 2px; }
     .dropdown-item .item-name mark { background: transparent; color: #d99a4e; font-weight: bold; }
     .dropdown-item .item-meta { font-size: 12px; color: #777; }
@@ -144,19 +143,13 @@
       box-shadow: 0 0 16px rgba(255,141,179,0.45);
     }
 
+    /* ЗАГОЛОВОК — без свечения */
     .page-title {
       font-family: 'Orbitron', sans-serif;
       font-size: 58px;
       margin: 40px 40px 10px;
       color: #ff8db3;
       letter-spacing: 2px;
-      animation: pinkPulse 3s ease-in-out infinite;
-    }
-
-    @keyframes pinkPulse {
-      0% { text-shadow: 0 0 10px rgba(255,141,179,0.55), 0 0 20px rgba(255,141,179,0.22); }
-      50% { text-shadow: 0 0 18px rgba(255,141,179,0.9), 0 0 36px rgba(255,141,179,0.45); }
-      100% { text-shadow: 0 0 10px rgba(255,141,179,0.55), 0 0 20px rgba(255,141,179,0.22); }
     }
 
     .container {
@@ -186,35 +179,28 @@
       flex-shrink: 0;
     }
 
-    /* S — красно-розовый, яркое анимированное свечение */
+    /* S — постоянное яркое свечение */
     .tier-badge.s {
       background: rgba(255,100,110,0.18);
       color: #ff6470;
       border: 2px solid rgba(255,100,110,0.6);
-      animation: sGlow 2.5s ease-in-out infinite;
+      box-shadow:
+        0 0 20px rgba(255,100,110,0.7),
+        0 0 50px rgba(255,100,110,0.35),
+        0 0 90px rgba(255,100,110,0.15);
     }
 
-    @keyframes sGlow {
-      0% { box-shadow: 0 0 16px rgba(255,100,110,0.5), 0 0 32px rgba(255,100,110,0.2); }
-      50% { box-shadow: 0 0 32px rgba(255,100,110,0.9), 0 0 64px rgba(255,100,110,0.45), 0 0 96px rgba(255,100,110,0.2); }
-      100% { box-shadow: 0 0 16px rgba(255,100,110,0.5), 0 0 32px rgba(255,100,110,0.2); }
-    }
-
-    /* A — оранжевый, свечение потусклее с анимацией */
+    /* A — постоянное свечение, потусклее */
     .tier-badge.a {
       background: rgba(255,160,60,0.14);
       color: #ffa03c;
       border: 2px solid rgba(255,160,60,0.5);
-      animation: aGlow 3s ease-in-out infinite;
+      box-shadow:
+        0 0 12px rgba(255,160,60,0.45),
+        0 0 28px rgba(255,160,60,0.20),
+        0 0 50px rgba(255,160,60,0.08);
     }
 
-    @keyframes aGlow {
-      0% { box-shadow: 0 0 10px rgba(255,160,60,0.35), 0 0 22px rgba(255,160,60,0.15); }
-      50% { box-shadow: 0 0 22px rgba(255,160,60,0.65), 0 0 44px rgba(255,160,60,0.30), 0 0 66px rgba(255,160,60,0.12); }
-      100% { box-shadow: 0 0 10px rgba(255,160,60,0.35), 0 0 22px rgba(255,160,60,0.15); }
-    }
-
-    /* B — персиково-оранжевый */
     .tier-badge.b {
       background: rgba(255,190,100,0.12);
       color: #ffbe64;
@@ -222,7 +208,6 @@
       box-shadow: 0 0 10px rgba(255,190,100,0.18);
     }
 
-    /* C — жёлтый */
     .tier-badge.c {
       background: rgba(255,235,80,0.10);
       color: #ffeb50;
@@ -230,7 +215,6 @@
       box-shadow: 0 0 10px rgba(255,235,80,0.15);
     }
 
-    /* D — жёлто-зелёный */
     .tier-badge.d {
       background: rgba(180,255,80,0.10);
       color: #b4ff50;
@@ -238,7 +222,6 @@
       box-shadow: 0 0 10px rgba(180,255,80,0.12);
     }
 
-    /* E — зелёный */
     .tier-badge.e {
       background: rgba(60,220,80,0.10);
       color: #3cdc50;
@@ -256,24 +239,28 @@
 
     .tier-label span { font-size: 14px; color: #888; letter-spacing: 0.5px; }
 
-    .tier-label strong.s { color: #ff6470; animation: sTextGlow 2.5s ease-in-out infinite; }
-    .tier-label strong.a { color: #ffa03c; animation: aTextGlow 3s ease-in-out infinite; }
+    /* S — постоянное яркое свечение текста */
+    .tier-label strong.s {
+      color: #ff6470;
+      text-shadow:
+        0 0 10px rgba(255,100,110,0.8),
+        0 0 22px rgba(255,100,110,0.45),
+        0 0 40px rgba(255,100,110,0.2);
+    }
+
+    /* A — постоянное, потусклее */
+    .tier-label strong.a {
+      color: #ffa03c;
+      text-shadow:
+        0 0 8px rgba(255,160,60,0.55),
+        0 0 18px rgba(255,160,60,0.25),
+        0 0 32px rgba(255,160,60,0.10);
+    }
+
     .tier-label strong.b { color: #ffbe64; text-shadow: 0 0 8px rgba(255,190,100,0.30); }
     .tier-label strong.c { color: #ffeb50; text-shadow: 0 0 8px rgba(255,235,80,0.28); }
     .tier-label strong.d { color: #b4ff50; text-shadow: 0 0 8px rgba(180,255,80,0.25); }
     .tier-label strong.e { color: #3cdc50; text-shadow: 0 0 8px rgba(60,220,80,0.25); }
-
-    @keyframes sTextGlow {
-      0% { text-shadow: 0 0 8px rgba(255,100,110,0.5), 0 0 18px rgba(255,100,110,0.2); }
-      50% { text-shadow: 0 0 16px rgba(255,100,110,0.9), 0 0 32px rgba(255,100,110,0.5), 0 0 50px rgba(255,100,110,0.2); }
-      100% { text-shadow: 0 0 8px rgba(255,100,110,0.5), 0 0 18px rgba(255,100,110,0.2); }
-    }
-
-    @keyframes aTextGlow {
-      0% { text-shadow: 0 0 6px rgba(255,160,60,0.4), 0 0 14px rgba(255,160,60,0.15); }
-      50% { text-shadow: 0 0 12px rgba(255,160,60,0.7), 0 0 26px rgba(255,160,60,0.35), 0 0 40px rgba(255,160,60,0.15); }
-      100% { text-shadow: 0 0 6px rgba(255,160,60,0.4), 0 0 14px rgba(255,160,60,0.15); }
-    }
 
     .tier-divider {
       height: 1px;
