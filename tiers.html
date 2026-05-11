@@ -16,10 +16,8 @@
 
     .bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: url('saloonmount.png') center/cover no-repeat;
       filter: brightness(0.68) blur(3px);
       transform: scale(1.04);
@@ -28,10 +26,8 @@
 
     .overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: radial-gradient(circle at center, rgba(255,110,140,0.06), rgba(0,0,0,0.76));
       z-index: -1;
     }
@@ -55,10 +51,7 @@
       font-weight: 800;
       font-size: 28px;
       letter-spacing: 2px;
-      text-shadow:
-        0 0 8px rgba(255,141,179,0.55),
-        0 0 20px rgba(255,141,179,0.25),
-        0 0 36px rgba(255,141,179,0.12);
+      text-shadow: 0 0 8px rgba(255,141,179,0.55), 0 0 20px rgba(255,141,179,0.25);
       flex-shrink: 0;
     }
 
@@ -84,17 +77,12 @@
     }
 
     .search-input::placeholder { color: #666; }
-
-    .search-input:focus {
-      border-color: #555;
-      box-shadow: 0 0 10px rgba(255,255,255,0.05);
-    }
+    .search-input:focus { border-color: #555; box-shadow: 0 0 10px rgba(255,255,255,0.05); }
 
     .search-dropdown {
       position: absolute;
       top: calc(100% + 6px);
-      left: 0;
-      right: 0;
+      left: 0; right: 0;
       background: #111;
       border: 1px solid #2e2e2e;
       border-radius: 10px;
@@ -114,23 +102,10 @@
     }
 
     .dropdown-item:last-child { border-bottom: none; }
+    .dropdown-item:hover, .dropdown-item.active { background: #222; }
 
-    .dropdown-item:hover,
-    .dropdown-item.active { background: #222; }
-
-    .dropdown-item .item-name {
-      font-size: 14px;
-      font-weight: bold;
-      color: #e0e0e0;
-      margin-bottom: 2px;
-    }
-
-    .dropdown-item .item-name mark {
-      background: transparent;
-      color: #d99a4e;
-      font-weight: bold;
-    }
-
+    .dropdown-item .item-name { font-size: 14px; font-weight: bold; color: #e0e0e0; margin-bottom: 2px; }
+    .dropdown-item .item-name mark { background: transparent; color: #d99a4e; font-weight: bold; }
     .dropdown-item .item-meta { font-size: 12px; color: #777; }
 
     .dropdown-item .item-source {
@@ -146,19 +121,9 @@
 
     .dropdown-item .item-source.builds { color: #63fff2; border-color: rgba(99,255,242,0.3); }
     .dropdown-item .item-source.tiers { color: #ff8db3; border-color: rgba(255,141,179,0.3); }
+    .dropdown-empty { padding: 14px 16px; color: #555; font-size: 13px; text-align: center; }
 
-    .dropdown-empty {
-      padding: 14px 16px;
-      color: #555;
-      font-size: 13px;
-      text-align: center;
-    }
-
-    nav {
-      display: flex;
-      gap: 16px;
-      flex-shrink: 0;
-    }
+    nav { display: flex; gap: 16px; flex-shrink: 0; }
 
     nav a {
       color: #ffe9dd;
@@ -179,17 +144,16 @@
       box-shadow: 0 0 16px rgba(255,141,179,0.45);
     }
 
-    /* ЗАГОЛОВОК СТРАНИЦЫ */
     .page-title {
       font-family: 'Orbitron', sans-serif;
       font-size: 58px;
       margin: 40px 40px 10px;
       color: #ff8db3;
       letter-spacing: 2px;
-      animation: glowPulse 3s ease-in-out infinite;
+      animation: pinkPulse 3s ease-in-out infinite;
     }
 
-    @keyframes glowPulse {
+    @keyframes pinkPulse {
       0% { text-shadow: 0 0 10px rgba(255,141,179,0.55), 0 0 20px rgba(255,141,179,0.22); }
       50% { text-shadow: 0 0 18px rgba(255,141,179,0.9), 0 0 36px rgba(255,141,179,0.45); }
       100% { text-shadow: 0 0 10px rgba(255,141,179,0.55), 0 0 20px rgba(255,141,179,0.22); }
@@ -202,7 +166,6 @@
       gap: 40px;
     }
 
-    /* ГРУППА ТИРА */
     .tier-header {
       display: flex;
       align-items: center;
@@ -223,44 +186,64 @@
       flex-shrink: 0;
     }
 
-    /* S — золотой */
+    /* S — красно-розовый, яркое анимированное свечение */
     .tier-badge.s {
-      background: rgba(255,210,0,0.12);
-      color: #ffd700;
-      border: 2px solid rgba(255,210,0,0.55);
-      box-shadow: 0 0 20px rgba(255,210,0,0.35), 0 0 40px rgba(255,210,0,0.15);
+      background: rgba(255,100,110,0.18);
+      color: #ff6470;
+      border: 2px solid rgba(255,100,110,0.6);
+      animation: sGlow 2.5s ease-in-out infinite;
     }
 
-    /* A — зелёный */
+    @keyframes sGlow {
+      0% { box-shadow: 0 0 16px rgba(255,100,110,0.5), 0 0 32px rgba(255,100,110,0.2); }
+      50% { box-shadow: 0 0 32px rgba(255,100,110,0.9), 0 0 64px rgba(255,100,110,0.45), 0 0 96px rgba(255,100,110,0.2); }
+      100% { box-shadow: 0 0 16px rgba(255,100,110,0.5), 0 0 32px rgba(255,100,110,0.2); }
+    }
+
+    /* A — оранжевый, свечение потусклее с анимацией */
     .tier-badge.a {
-      background: rgba(50,220,100,0.10);
-      color: #32dc64;
-      border: 2px solid rgba(50,220,100,0.45);
-      box-shadow: 0 0 14px rgba(50,220,100,0.25), 0 0 28px rgba(50,220,100,0.10);
+      background: rgba(255,160,60,0.14);
+      color: #ffa03c;
+      border: 2px solid rgba(255,160,60,0.5);
+      animation: aGlow 3s ease-in-out infinite;
     }
 
-    /* B — жёлтый */
+    @keyframes aGlow {
+      0% { box-shadow: 0 0 10px rgba(255,160,60,0.35), 0 0 22px rgba(255,160,60,0.15); }
+      50% { box-shadow: 0 0 22px rgba(255,160,60,0.65), 0 0 44px rgba(255,160,60,0.30), 0 0 66px rgba(255,160,60,0.12); }
+      100% { box-shadow: 0 0 10px rgba(255,160,60,0.35), 0 0 22px rgba(255,160,60,0.15); }
+    }
+
+    /* B — персиково-оранжевый */
     .tier-badge.b {
-      background: rgba(255,240,80,0.10);
-      color: #fff050;
-      border: 2px solid rgba(255,240,80,0.40);
-      box-shadow: 0 0 12px rgba(255,240,80,0.20), 0 0 24px rgba(255,240,80,0.08);
+      background: rgba(255,190,100,0.12);
+      color: #ffbe64;
+      border: 2px solid rgba(255,190,100,0.40);
+      box-shadow: 0 0 10px rgba(255,190,100,0.18);
     }
 
-    /* C — оранжевый */
+    /* C — жёлтый */
     .tier-badge.c {
-      background: rgba(255,140,0,0.10);
-      color: #ff8c00;
-      border: 2px solid rgba(255,140,0,0.40);
-      box-shadow: 0 0 12px rgba(255,140,0,0.20), 0 0 24px rgba(255,140,0,0.08);
+      background: rgba(255,235,80,0.10);
+      color: #ffeb50;
+      border: 2px solid rgba(255,235,80,0.38);
+      box-shadow: 0 0 10px rgba(255,235,80,0.15);
     }
 
-    /* D — красный */
+    /* D — жёлто-зелёный */
     .tier-badge.d {
-      background: rgba(220,50,50,0.10);
-      color: #f05050;
-      border: 2px solid rgba(220,50,50,0.40);
-      box-shadow: 0 0 12px rgba(220,50,50,0.20), 0 0 24px rgba(220,50,50,0.08);
+      background: rgba(180,255,80,0.10);
+      color: #b4ff50;
+      border: 2px solid rgba(180,255,80,0.35);
+      box-shadow: 0 0 10px rgba(180,255,80,0.12);
+    }
+
+    /* E — зелёный */
+    .tier-badge.e {
+      background: rgba(60,220,80,0.10);
+      color: #3cdc50;
+      border: 2px solid rgba(60,220,80,0.35);
+      box-shadow: 0 0 10px rgba(60,220,80,0.12);
     }
 
     .tier-label { font-family: 'Orbitron', sans-serif; }
@@ -271,17 +254,26 @@
       margin-bottom: 4px;
     }
 
-    .tier-label span {
-      font-size: 14px;
-      color: #888;
-      letter-spacing: 0.5px;
+    .tier-label span { font-size: 14px; color: #888; letter-spacing: 0.5px; }
+
+    .tier-label strong.s { color: #ff6470; animation: sTextGlow 2.5s ease-in-out infinite; }
+    .tier-label strong.a { color: #ffa03c; animation: aTextGlow 3s ease-in-out infinite; }
+    .tier-label strong.b { color: #ffbe64; text-shadow: 0 0 8px rgba(255,190,100,0.30); }
+    .tier-label strong.c { color: #ffeb50; text-shadow: 0 0 8px rgba(255,235,80,0.28); }
+    .tier-label strong.d { color: #b4ff50; text-shadow: 0 0 8px rgba(180,255,80,0.25); }
+    .tier-label strong.e { color: #3cdc50; text-shadow: 0 0 8px rgba(60,220,80,0.25); }
+
+    @keyframes sTextGlow {
+      0% { text-shadow: 0 0 8px rgba(255,100,110,0.5), 0 0 18px rgba(255,100,110,0.2); }
+      50% { text-shadow: 0 0 16px rgba(255,100,110,0.9), 0 0 32px rgba(255,100,110,0.5), 0 0 50px rgba(255,100,110,0.2); }
+      100% { text-shadow: 0 0 8px rgba(255,100,110,0.5), 0 0 18px rgba(255,100,110,0.2); }
     }
 
-    .tier-label strong.s { color: #ffd700; text-shadow: 0 0 10px rgba(255,210,0,0.5); }
-    .tier-label strong.a { color: #32dc64; text-shadow: 0 0 8px rgba(50,220,100,0.35); }
-    .tier-label strong.b { color: #fff050; text-shadow: 0 0 8px rgba(255,240,80,0.30); }
-    .tier-label strong.c { color: #ff8c00; text-shadow: 0 0 8px rgba(255,140,0,0.30); }
-    .tier-label strong.d { color: #f05050; text-shadow: 0 0 8px rgba(220,50,50,0.30); }
+    @keyframes aTextGlow {
+      0% { text-shadow: 0 0 6px rgba(255,160,60,0.4), 0 0 14px rgba(255,160,60,0.15); }
+      50% { text-shadow: 0 0 12px rgba(255,160,60,0.7), 0 0 26px rgba(255,160,60,0.35), 0 0 40px rgba(255,160,60,0.15); }
+      100% { text-shadow: 0 0 6px rgba(255,160,60,0.4), 0 0 14px rgba(255,160,60,0.15); }
+    }
 
     .tier-divider {
       height: 1px;
@@ -289,7 +281,6 @@
       margin-bottom: 18px;
     }
 
-    /* КАРТОЧКИ */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -305,11 +296,12 @@
       animation: fadeUp 0.4s ease forwards;
     }
 
-    .card.s { border: 1px solid rgba(255,210,0,0.35); box-shadow: 0 0 16px rgba(255,210,0,0.07); }
-    .card.a { border: 1px solid rgba(50,220,100,0.30); box-shadow: 0 0 16px rgba(50,220,100,0.06); }
-    .card.b { border: 1px solid rgba(255,240,80,0.30); box-shadow: 0 0 16px rgba(255,240,80,0.06); }
-    .card.c { border: 1px solid rgba(255,140,0,0.30); box-shadow: 0 0 16px rgba(255,140,0,0.06); }
-    .card.d { border: 1px solid rgba(220,50,50,0.30); box-shadow: 0 0 16px rgba(220,50,50,0.06); }
+    .card.s { border: 1px solid rgba(255,100,110,0.40); box-shadow: 0 0 16px rgba(255,100,110,0.08); }
+    .card.a { border: 1px solid rgba(255,160,60,0.35); box-shadow: 0 0 16px rgba(255,160,60,0.07); }
+    .card.b { border: 1px solid rgba(255,190,100,0.30); box-shadow: 0 0 14px rgba(255,190,100,0.06); }
+    .card.c { border: 1px solid rgba(255,235,80,0.30); box-shadow: 0 0 14px rgba(255,235,80,0.06); }
+    .card.d { border: 1px solid rgba(180,255,80,0.28); box-shadow: 0 0 14px rgba(180,255,80,0.05); }
+    .card.e { border: 1px solid rgba(60,220,80,0.28); box-shadow: 0 0 14px rgba(60,220,80,0.05); }
 
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
@@ -321,17 +313,14 @@
       font-size: 18px;
     }
 
-    .card.s h3 { color: #ffd700; }
-    .card.a h3 { color: #32dc64; }
-    .card.b h3 { color: #fff050; }
-    .card.c h3 { color: #ff8c00; }
-    .card.d h3 { color: #f05050; }
+    .card.s h3 { color: #ff6470; }
+    .card.a h3 { color: #ffa03c; }
+    .card.b h3 { color: #ffbe64; }
+    .card.c h3 { color: #ffeb50; }
+    .card.d h3 { color: #b4ff50; }
+    .card.e h3 { color: #3cdc50; }
 
-    .card p {
-      margin: 5px 0;
-      font-size: 14px;
-      color: #b0a090;
-    }
+    .card p { margin: 5px 0; font-size: 14px; color: #b0a090; }
 
     .card-tag {
       display: inline-block;
@@ -341,11 +330,12 @@
       font-size: 12px;
     }
 
-    .card.s .card-tag { color: #ffd700; border: 1px solid rgba(255,210,0,0.4); background: rgba(255,210,0,0.05); }
-    .card.a .card-tag { color: #32dc64; border: 1px solid rgba(50,220,100,0.4); background: rgba(50,220,100,0.05); }
-    .card.b .card-tag { color: #fff050; border: 1px solid rgba(255,240,80,0.4); background: rgba(255,240,80,0.05); }
-    .card.c .card-tag { color: #ff8c00; border: 1px solid rgba(255,140,0,0.4); background: rgba(255,140,0,0.05); }
-    .card.d .card-tag { color: #f05050; border: 1px solid rgba(220,50,50,0.4); background: rgba(220,50,50,0.05); }
+    .card.s .card-tag { color: #ff6470; border: 1px solid rgba(255,100,110,0.4); background: rgba(255,100,110,0.06); }
+    .card.a .card-tag { color: #ffa03c; border: 1px solid rgba(255,160,60,0.4); background: rgba(255,160,60,0.06); }
+    .card.b .card-tag { color: #ffbe64; border: 1px solid rgba(255,190,100,0.4); background: rgba(255,190,100,0.06); }
+    .card.c .card-tag { color: #ffeb50; border: 1px solid rgba(255,235,80,0.4); background: rgba(255,235,80,0.06); }
+    .card.d .card-tag { color: #b4ff50; border: 1px solid rgba(180,255,80,0.4); background: rgba(180,255,80,0.06); }
+    .card.e .card-tag { color: #3cdc50; border: 1px solid rgba(60,220,80,0.4); background: rgba(60,220,80,0.06); }
   </style>
 </head>
 <body>
@@ -355,12 +345,10 @@
 
 <header>
   <div class="logo">FAR FAR WEST BUILDS</div>
-
   <div class="search-wrapper">
     <input class="search-input" type="text" placeholder="Search builds, tiers..." id="searchInput" autocomplete="off" />
     <div class="search-dropdown" id="searchDropdown"></div>
   </div>
-
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
@@ -372,7 +360,7 @@
 
 <div class="container">
 
-  <!-- S TIER -->
+  <!-- S -->
   <div class="tier-group">
     <div class="tier-header">
       <div class="tier-badge s">S</div>
@@ -398,7 +386,7 @@
     </div>
   </div>
 
-  <!-- A TIER -->
+  <!-- A -->
   <div class="tier-group">
     <div class="tier-header">
       <div class="tier-badge a">A</div>
@@ -424,7 +412,7 @@
     </div>
   </div>
 
-  <!-- B TIER -->
+  <!-- B -->
   <div class="tier-group">
     <div class="tier-header">
       <div class="tier-badge b">B</div>
@@ -444,7 +432,7 @@
     </div>
   </div>
 
-  <!-- C TIER -->
+  <!-- C -->
   <div class="tier-group">
     <div class="tier-header">
       <div class="tier-badge c">C</div>
@@ -464,7 +452,7 @@
     </div>
   </div>
 
-  <!-- D TIER -->
+  <!-- D -->
   <div class="tier-group">
     <div class="tier-header">
       <div class="tier-badge d">D</div>
@@ -484,6 +472,26 @@
     </div>
   </div>
 
+  <!-- E -->
+  <div class="tier-group">
+    <div class="tier-header">
+      <div class="tier-badge e">E</div>
+      <div class="tier-label">
+        <strong class="e">E Tier — Bottom of the Barrel</strong>
+        <span>Essentially unplayable. Avoid at all costs.</span>
+      </div>
+    </div>
+    <div class="tier-divider"></div>
+    <div class="cards-grid">
+      <div class="card e">
+        <h3>Rusty Nail</h3>
+        <p>Weapon: Bent Pistol</p>
+        <p>Playstyle: Suffer</p>
+        <span class="card-tag">Do Not Use</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -492,7 +500,10 @@
     { name: "Gunslinger", details: "Weapon: Dual Revolvers · Playstyle: Fast close combat DPS", tag: "Tier: A", source: "builds", page: "builds.html" },
     { name: "S Tier", details: "Meta-defining weapons with the strongest performance.", tag: "Top Meta", source: "tiers", page: "tiers.html" },
     { name: "A Tier", details: "Reliable and powerful builds for most encounters.", tag: "Strong Choice", source: "tiers", page: "tiers.html" },
-    { name: "B Tier", details: "Situational weapons with decent performance.", tag: "Balanced", source: "tiers", page: "tiers.html" }
+    { name: "B Tier", details: "Solid options for specific tasks.", tag: "Balanced", source: "tiers", page: "tiers.html" },
+    { name: "C Tier", details: "Situational, only useful in specific conditions.", tag: "Situational", source: "tiers", page: "tiers.html" },
+    { name: "D Tier", details: "On the weak side. Possible niche applications only.", tag: "Avoid", source: "tiers", page: "tiers.html" },
+    { name: "E Tier", details: "Essentially unplayable. Avoid at all costs.", tag: "Do Not Use", source: "tiers", page: "tiers.html" }
   ];
 
   const input = document.getElementById('searchInput');
@@ -520,15 +531,12 @@
     activeIndex = -1;
     currentResults = search(query);
     dropdown.innerHTML = '';
-
     if (!query.trim()) { dropdown.classList.remove('visible'); return; }
-
     if (currentResults.length === 0) {
       dropdown.innerHTML = `<div class="dropdown-empty">No results for "${query}"</div>`;
       dropdown.classList.add('visible');
       return;
     }
-
     currentResults.forEach((item, i) => {
       const div = document.createElement('div');
       div.className = 'dropdown-item';
@@ -541,21 +549,16 @@
       div.addEventListener('mouseover', () => { setActive(i); });
       dropdown.appendChild(div);
     });
-
     dropdown.classList.add('visible');
   }
 
   function setActive(index) {
     const items = dropdown.querySelectorAll('.dropdown-item');
     items.forEach(el => el.classList.remove('active'));
-    if (index >= 0 && index < items.length) {
-      items[index].classList.add('active');
-      activeIndex = index;
-    }
+    if (index >= 0 && index < items.length) { items[index].classList.add('active'); activeIndex = index; }
   }
 
   input.addEventListener('input', () => { renderDropdown(input.value); });
-
   input.addEventListener('keydown', (e) => {
     const items = dropdown.querySelectorAll('.dropdown-item');
     if (e.key === 'ArrowDown') { e.preventDefault(); setActive(Math.min(activeIndex + 1, items.length - 1)); }
@@ -563,14 +566,8 @@
     else if (e.key === 'Enter' && activeIndex >= 0) { window.location.href = currentResults[activeIndex].page; }
     else if (e.key === 'Escape') { dropdown.classList.remove('visible'); input.blur(); }
   });
-
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.search-wrapper')) dropdown.classList.remove('visible');
-  });
-
-  input.addEventListener('focus', () => {
-    if (input.value.trim()) renderDropdown(input.value);
-  });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.search-wrapper')) dropdown.classList.remove('visible'); });
+  input.addEventListener('focus', () => { if (input.value.trim()) renderDropdown(input.value); });
 </script>
 </body>
 </html>
