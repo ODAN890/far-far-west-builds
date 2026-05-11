@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Tiers</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
@@ -13,6 +11,7 @@
       background: #000;
       color: #ffe9dd;
       overflow-x: hidden;
+      overflow-y: auto;
     }
 
     .bg {
@@ -42,6 +41,8 @@
     }
 
     header {
+      position: sticky;
+      top: 0;
       padding: 18px 30px;
       background: rgba(0,0,0,0.92);
       display: flex;
@@ -49,7 +50,6 @@
       align-items: center;
       border-bottom: 1px solid rgba(255,120,160,0.22);
       backdrop-filter: blur(8px);
-      position: relative;
       z-index: 100;
     }
 
@@ -66,7 +66,6 @@
       flex-shrink: 0;
     }
 
-    /* SEARCH */
     .search-wrapper {
       position: absolute;
       left: 50%;
@@ -88,9 +87,7 @@
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .search-input::placeholder {
-      color: #666;
-    }
+    .search-input::placeholder { color: #666; }
 
     .search-input:focus {
       border-color: #555;
@@ -111,9 +108,7 @@
       z-index: 200;
     }
 
-    .search-dropdown.visible {
-      display: block;
-    }
+    .search-dropdown.visible { display: block; }
 
     .dropdown-item {
       padding: 12px 16px;
@@ -122,14 +117,10 @@
       transition: background 0.15s;
     }
 
-    .dropdown-item:last-child {
-      border-bottom: none;
-    }
+    .dropdown-item:last-child { border-bottom: none; }
 
     .dropdown-item:hover,
-    .dropdown-item.active {
-      background: #222;
-    }
+    .dropdown-item.active { background: #222; }
 
     .dropdown-item .item-name {
       font-size: 14px;
@@ -202,92 +193,142 @@
       box-shadow: 0 0 16px rgba(255,141,179,0.45);
     }
 
-    h1 {
+    /* КОНТЕНТ */
+    .page-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: 58px;
-      margin: 35px 20px 10px;
+      font-size: 52px;
+      margin: 35px 30px 10px;
       color: #ff8db3;
       letter-spacing: 2px;
       animation: glowPulse 3s ease-in-out infinite;
     }
 
     @keyframes glowPulse {
-      0% {
-        text-shadow:
-          0 0 10px rgba(255,141,179,0.55),
-          0 0 20px rgba(255,141,179,0.22);
-      }
-      50% {
-        text-shadow:
-          0 0 18px rgba(255,141,179,0.9),
-          0 0 36px rgba(255,141,179,0.45);
-      }
-      100% {
-        text-shadow:
-          0 0 10px rgba(255,141,179,0.55),
-          0 0 20px rgba(255,141,179,0.22);
-      }
+      0% { text-shadow: 0 0 10px rgba(255,141,179,0.55), 0 0 20px rgba(255,141,179,0.22); }
+      50% { text-shadow: 0 0 18px rgba(255,141,179,0.9), 0 0 36px rgba(255,141,179,0.45); }
+      100% { text-shadow: 0 0 10px rgba(255,141,179,0.55), 0 0 20px rgba(255,141,179,0.22); }
     }
 
     .container {
+      padding: 10px 30px 60px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      padding: 10px 20px 40px;
+      gap: 32px;
     }
 
-    .tier-card {
-      background: linear-gradient(
-        145deg,
-        rgba(30,15,18,0.84),
-        rgba(12,8,8,0.72)
-      );
-      border: 1px solid rgba(255,141,179,0.35);
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: 0 0 18px rgba(255,141,179,0.08);
-      opacity: 0;
-      transform: translateX(-60px);
-      animation: slideIn 0.5s ease forwards;
+    /* ГРУППА ТИРА */
+    .tier-group {}
+
+    .tier-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
     }
 
-    .tier-card:nth-child(1) { animation-delay: 0.15s; }
-    .tier-card:nth-child(2) { animation-delay: 0.30s; }
-    .tier-card:nth-child(3) { animation-delay: 0.45s; }
-
-    @keyframes slideIn {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .tier-card h2 {
-      margin: 0;
-      color: #ff8db3;
+    .tier-badge {
       font-family: 'Orbitron', sans-serif;
-      font-size: 26px;
+      font-size: 28px;
+      font-weight: 800;
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      flex-shrink: 0;
     }
 
-    .tier-card p {
-      margin-top: 10px;
-      color: #ffe9dd;
-      font-size: 15px;
+    .tier-badge.s { background: rgba(255,200,50,0.15); color: #ffc832; border: 2px solid rgba(255,200,50,0.5); box-shadow: 0 0 16px rgba(255,200,50,0.2); }
+    .tier-badge.a { background: rgba(255,141,179,0.15); color: #ff8db3; border: 2px solid rgba(255,141,179,0.5); box-shadow: 0 0 16px rgba(255,141,179,0.2); }
+    .tier-badge.b { background: rgba(99,255,242,0.10); color: #63fff2; border: 2px solid rgba(99,255,242,0.4); box-shadow: 0 0 16px rgba(99,255,242,0.15); }
+    .tier-badge.c { background: rgba(160,160,255,0.10); color: #a0a0ff; border: 2px solid rgba(160,160,255,0.4); box-shadow: 0 0 16px rgba(160,160,255,0.15); }
+    .tier-badge.d { background: rgba(180,180,180,0.10); color: #aaa; border: 2px solid rgba(180,180,180,0.3); }
+
+    .tier-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      color: #888;
+      letter-spacing: 1px;
     }
 
-    .tier-tag {
+    .tier-label strong {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .tier-label strong.s { color: #ffc832; }
+    .tier-label strong.a { color: #ff8db3; }
+    .tier-label strong.b { color: #63fff2; }
+    .tier-label strong.c { color: #a0a0ff; }
+    .tier-label strong.d { color: #aaa; }
+
+    .tier-divider {
+      height: 1px;
+      background: linear-gradient(to right, rgba(255,141,179,0.3), transparent);
+      margin-bottom: 14px;
+    }
+
+    /* КАРТОЧКИ */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(30,15,18,0.84), rgba(12,8,8,0.72));
+      border-radius: 14px;
+      padding: 18px 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.4s ease forwards;
+    }
+
+    .card.s { border: 1px solid rgba(255,200,50,0.35); box-shadow: 0 0 14px rgba(255,200,50,0.06); }
+    .card.a { border: 1px solid rgba(255,141,179,0.35); box-shadow: 0 0 14px rgba(255,141,179,0.06); }
+    .card.b { border: 1px solid rgba(99,255,242,0.30); box-shadow: 0 0 14px rgba(99,255,242,0.05); }
+    .card.c { border: 1px solid rgba(160,160,255,0.30); box-shadow: 0 0 14px rgba(160,160,255,0.05); }
+    .card.d { border: 1px solid rgba(180,180,180,0.20); }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+    }
+
+    .card.s h3 { color: #ffc832; }
+    .card.a h3 { color: #ff8db3; }
+    .card.b h3 { color: #63fff2; }
+    .card.c h3 { color: #a0a0ff; }
+    .card.d h3 { color: #aaa; }
+
+    .card p {
+      margin: 4px 0;
+      font-size: 13px;
+      color: #b0a090;
+    }
+
+    .card-tag {
       display: inline-block;
-      margin-top: 12px;
-      padding: 7px 12px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,141,179,0.55);
-      color: #ff8db3;
-      background: rgba(255,141,179,0.06);
-      font-size: 12px;
+      margin-top: 10px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
     }
+
+    .card.s .card-tag { color: #ffc832; border: 1px solid rgba(255,200,50,0.4); background: rgba(255,200,50,0.05); }
+    .card.a .card-tag { color: #ff8db3; border: 1px solid rgba(255,141,179,0.4); background: rgba(255,141,179,0.05); }
+    .card.b .card-tag { color: #63fff2; border: 1px solid rgba(99,255,242,0.4); background: rgba(99,255,242,0.05); }
+    .card.c .card-tag { color: #a0a0ff; border: 1px solid rgba(160,160,255,0.4); background: rgba(160,160,255,0.05); }
+    .card.d .card-tag { color: #aaa; border: 1px solid rgba(180,180,180,0.3); background: rgba(180,180,180,0.05); }
   </style>
 </head>
-
 <body>
 
 <div class="bg"></div>
@@ -297,84 +338,142 @@
   <div class="logo">FAR FAR WEST BUILDS</div>
 
   <div class="search-wrapper">
-    <input
-      class="search-input"
-      type="text"
-      placeholder="Search builds, tiers..."
-      id="searchInput"
-      autocomplete="off"
-    />
+    <input class="search-input" type="text" placeholder="Search builds, tiers..." id="searchInput" autocomplete="off" />
     <div class="search-dropdown" id="searchDropdown"></div>
   </div>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="builds.html">Builds</a>
-    <a href="tiers.html">Tires</a>
+    <a href="tiers.html">Tiers</a>
   </nav>
 </header>
 
-<h1>Tiers</h1>
+<div class="page-title">Tier List</div>
 
 <div class="container">
 
-  <div class="tier-card">
-    <h2>S Tier</h2>
-    <p>Meta-defining weapons with the strongest performance.</p>
-    <span class="tier-tag">Top Meta</span>
+  <!-- S TIER -->
+  <div class="tier-group">
+    <div class="tier-header">
+      <div class="tier-badge s">S</div>
+      <div class="tier-label">
+        <strong class="s">S Tier — Prime Time</strong>
+        Meta-defining. The strongest picks in the game.
+      </div>
+    </div>
+    <div class="tier-divider"></div>
+    <div class="cards-grid">
+      <div class="card s">
+        <h3>Dust Reaper</h3>
+        <p>Weapon: Repeater Rifle</p>
+        <p>Playstyle: Mid-range burst damage</p>
+        <span class="card-tag">Top Meta</span>
+      </div>
+      <div class="card s">
+        <h3>Iron Judge</h3>
+        <p>Weapon: Lever-Action Shotgun</p>
+        <p>Playstyle: Close-range devastation</p>
+        <span class="card-tag">Top Meta</span>
+      </div>
+    </div>
   </div>
 
-  <div class="tier-card">
-    <h2>A Tier</h2>
-    <p>Reliable and powerful builds for most encounters.</p>
-    <span class="tier-tag">Strong Choice</span>
+  <!-- A TIER -->
+  <div class="tier-group">
+    <div class="tier-header">
+      <div class="tier-badge a">A</div>
+      <div class="tier-label">
+        <strong class="a">A Tier — Strong Picks</strong>
+        Reliable and powerful builds for most encounters.
+      </div>
+    </div>
+    <div class="tier-divider"></div>
+    <div class="cards-grid">
+      <div class="card a">
+        <h3>Gunslinger</h3>
+        <p>Weapon: Dual Revolvers</p>
+        <p>Playstyle: Fast close combat DPS</p>
+        <span class="card-tag">Strong Choice</span>
+      </div>
+      <div class="card a">
+        <h3>Prairie Ghost</h3>
+        <p>Weapon: Silenced Pistol</p>
+        <p>Playstyle: Stealth and mobility</p>
+        <span class="card-tag">Strong Choice</span>
+      </div>
+    </div>
   </div>
 
-  <div class="tier-card">
-    <h2>B Tier</h2>
-    <p>Situational weapons with decent performance.</p>
-    <span class="tier-tag">Balanced</span>
+  <!-- B TIER -->
+  <div class="tier-group">
+    <div class="tier-header">
+      <div class="tier-badge b">B</div>
+      <div class="tier-label">
+        <strong class="b">B Tier — Good Picks</strong>
+        Solid options for specific tasks.
+      </div>
+    </div>
+    <div class="tier-divider"></div>
+    <div class="cards-grid">
+      <div class="card b">
+        <h3>Drifter</h3>
+        <p>Weapon: Bolt-Action Rifle</p>
+        <p>Playstyle: Long-range sniper</p>
+        <span class="card-tag">Balanced</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- C TIER -->
+  <div class="tier-group">
+    <div class="tier-header">
+      <div class="tier-badge c">C</div>
+      <div class="tier-label">
+        <strong class="c">C Tier — Average Picks</strong>
+        Situational, only useful in specific conditions.
+      </div>
+    </div>
+    <div class="tier-divider"></div>
+    <div class="cards-grid">
+      <div class="card c">
+        <h3>Rustbucket</h3>
+        <p>Weapon: Old Revolver</p>
+        <p>Playstyle: Budget early-game</p>
+        <span class="card-tag">Situational</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- D TIER -->
+  <div class="tier-group">
+    <div class="tier-header">
+      <div class="tier-badge d">D</div>
+      <div class="tier-label">
+        <strong class="d">D Tier — Weak Picks</strong>
+        On the weak side. Possible niche applications only.
+      </div>
+    </div>
+    <div class="tier-divider"></div>
+    <div class="cards-grid">
+      <div class="card d">
+        <h3>Tumbleweed</h3>
+        <p>Weapon: Broken Musket</p>
+        <p>Playstyle: Meme builds only</p>
+        <span class="card-tag">Avoid</span>
+      </div>
+    </div>
   </div>
 
 </div>
 
 <script>
   const data = [
-    {
-      name: "Dust Reaper",
-      details: "Weapon: Repeater Rifle · Playstyle: Mid-range burst damage",
-      tag: "Tier: S",
-      source: "builds",
-      page: "builds.html"
-    },
-    {
-      name: "Gunslinger",
-      details: "Weapon: Dual Revolvers · Playstyle: Fast close combat DPS",
-      tag: "Tier: A",
-      source: "builds",
-      page: "builds.html"
-    },
-    {
-      name: "S Tier",
-      details: "Meta-defining weapons with the strongest performance.",
-      tag: "Top Meta",
-      source: "tiers",
-      page: "tiers.html"
-    },
-    {
-      name: "A Tier",
-      details: "Reliable and powerful builds for most encounters.",
-      tag: "Strong Choice",
-      source: "tiers",
-      page: "tiers.html"
-    },
-    {
-      name: "B Tier",
-      details: "Situational weapons with decent performance.",
-      tag: "Balanced",
-      source: "tiers",
-      page: "tiers.html"
-    }
+    { name: "Dust Reaper", details: "Weapon: Repeater Rifle · Playstyle: Mid-range burst damage", tag: "Tier: S", source: "builds", page: "builds.html" },
+    { name: "Gunslinger", details: "Weapon: Dual Revolvers · Playstyle: Fast close combat DPS", tag: "Tier: A", source: "builds", page: "builds.html" },
+    { name: "S Tier", details: "Meta-defining weapons with the strongest performance.", tag: "Top Meta", source: "tiers", page: "tiers.html" },
+    { name: "A Tier", details: "Reliable and powerful builds for most encounters.", tag: "Strong Choice", source: "tiers", page: "tiers.html" },
+    { name: "B Tier", details: "Situational weapons with decent performance.", tag: "Balanced", source: "tiers", page: "tiers.html" }
   ];
 
   const input = document.getElementById('searchInput');
@@ -403,10 +502,7 @@
     currentResults = search(query);
     dropdown.innerHTML = '';
 
-    if (!query.trim()) {
-      dropdown.classList.remove('visible');
-      return;
-    }
+    if (!query.trim()) { dropdown.classList.remove('visible'); return; }
 
     if (currentResults.length === 0) {
       dropdown.innerHTML = `<div class="dropdown-empty">No results for "${query}"</div>`;
@@ -417,18 +513,13 @@
     currentResults.forEach((item, i) => {
       const div = document.createElement('div');
       div.className = 'dropdown-item';
-      div.dataset.index = i;
       div.innerHTML = `
         <div class="item-name">${highlight(item.name, query)}</div>
         <div class="item-meta">${highlight(item.details, query)}</div>
         <span class="item-source ${item.source}">${item.source === 'builds' ? 'Builds' : 'Tiers'} · ${highlight(item.tag, query)}</span>
       `;
-      div.addEventListener('mousedown', () => {
-        window.location.href = item.page;
-      });
-      div.addEventListener('mouseover', () => {
-        setActive(i);
-      });
+      div.addEventListener('mousedown', () => { window.location.href = item.page; });
+      div.addEventListener('mouseover', () => { setActive(i); });
       dropdown.appendChild(div);
     });
 
@@ -444,40 +535,23 @@
     }
   }
 
-  input.addEventListener('input', () => {
-    renderDropdown(input.value);
-  });
+  input.addEventListener('input', () => { renderDropdown(input.value); });
 
   input.addEventListener('keydown', (e) => {
     const items = dropdown.querySelectorAll('.dropdown-item');
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setActive(Math.min(activeIndex + 1, items.length - 1));
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setActive(Math.max(activeIndex - 1, 0));
-    } else if (e.key === 'Enter') {
-      if (activeIndex >= 0 && currentResults[activeIndex]) {
-        window.location.href = currentResults[activeIndex].page;
-      }
-    } else if (e.key === 'Escape') {
-      dropdown.classList.remove('visible');
-      input.blur();
-    }
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(Math.min(activeIndex + 1, items.length - 1)); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(activeIndex - 1, 0)); }
+    else if (e.key === 'Enter' && activeIndex >= 0) { window.location.href = currentResults[activeIndex].page; }
+    else if (e.key === 'Escape') { dropdown.classList.remove('visible'); input.blur(); }
   });
 
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.search-wrapper')) {
-      dropdown.classList.remove('visible');
-    }
+    if (!e.target.closest('.search-wrapper')) dropdown.classList.remove('visible');
   });
 
   input.addEventListener('focus', () => {
-    if (input.value.trim()) {
-      renderDropdown(input.value);
-    }
+    if (input.value.trim()) renderDropdown(input.value);
   });
 </script>
-
 </body>
 </html>
