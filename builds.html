@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tiers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+  <title>Builds</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       font-family: Arial;
       background: #000;
-      color: #ffe9dd;
+      color: #dffefe;
       overflow-x: hidden;
-      overflow-y: auto;
     }
 
     .bg {
@@ -20,9 +21,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('saloonmount.png') center/cover no-repeat;
-      filter: brightness(0.68) blur(3px);
-      transform: scale(1.04);
+      background: url('polarsaloon.png') center/cover no-repeat;
+      filter: brightness(0.62) blur(3px);
+      transform: scale(1.05);
       z-index: -2;
     }
 
@@ -32,33 +33,35 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(255,110,140,0.06), rgba(0,0,0,0.76));
+      background: radial-gradient(
+        circle at center,
+        rgba(0, 255, 220, 0.06),
+        rgba(0,0,0,0.72)
+      );
       z-index: -1;
     }
 
     header {
-      position: sticky;
-      top: 0;
       padding: 18px 30px;
       background: rgba(0,0,0,0.92);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255,120,160,0.22);
+      border-bottom: 1px solid rgba(0,255,220,0.25);
       backdrop-filter: blur(8px);
+      position: relative;
       z-index: 100;
     }
 
     .logo {
       font-family: 'Orbitron', sans-serif;
-      color: #ff8db3;
-      font-weight: 800;
+      color: #63fff2;
+      font-weight: 700;
       font-size: 28px;
       letter-spacing: 2px;
       text-shadow:
-        0 0 8px rgba(255,141,179,0.55),
-        0 0 20px rgba(255,141,179,0.25),
-        0 0 36px rgba(255,141,179,0.12);
+        0 0 8px rgba(99,255,242,0.5),
+        0 0 18px rgba(99,255,242,0.2);
       flex-shrink: 0;
     }
 
@@ -161,11 +164,11 @@
     }
 
     nav a {
-      color: #ffe9dd;
+      color: #dffefe;
       text-decoration: none;
       padding: 14px 22px;
-      background: rgba(25,18,20,0.78);
-      border: 1px solid rgba(255,141,179,0.6);
+      background: rgba(10,20,20,0.7);
+      border: 1px solid rgba(99,255,242,0.55);
       border-radius: 12px;
       font-weight: bold;
       font-size: 16px;
@@ -173,181 +176,78 @@
     }
 
     nav a:hover {
-      background: #ff8db3;
+      background: #63fff2;
       color: black;
-      border-color: #ff8db3;
-      box-shadow: 0 0 16px rgba(255,141,179,0.45);
+      box-shadow: 0 0 14px rgba(99,255,242,0.6);
     }
 
-    /* ЗАГОЛОВОК СТРАНИЦЫ */
-    .page-title {
+    h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 58px;
-      margin: 40px 40px 10px;
-      color: #ff8db3;
+      font-size: 56px;
+      margin: 35px 20px 15px;
+      color: #63fff2;
       letter-spacing: 2px;
-      animation: glowPulse 3s ease-in-out infinite;
-    }
-
-    @keyframes glowPulse {
-      0% { text-shadow: 0 0 10px rgba(255,141,179,0.55), 0 0 20px rgba(255,141,179,0.22); }
-      50% { text-shadow: 0 0 18px rgba(255,141,179,0.9), 0 0 36px rgba(255,141,179,0.45); }
-      100% { text-shadow: 0 0 10px rgba(255,141,179,0.55), 0 0 20px rgba(255,141,179,0.22); }
+      text-shadow:
+        0 0 12px rgba(99,255,242,0.45),
+        0 0 28px rgba(99,255,242,0.15);
     }
 
     .container {
-      padding: 10px 40px 80px;
       display: flex;
       flex-direction: column;
-      gap: 40px;
-    }
-
-    /* ГРУППА ТИРА */
-    .tier-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 16px;
-    }
-
-    .tier-badge {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 34px;
-      font-weight: 800;
-      width: 68px;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      flex-shrink: 0;
-    }
-
-    /* S — золотой */
-    .tier-badge.s {
-      background: rgba(255,210,0,0.12);
-      color: #ffd700;
-      border: 2px solid rgba(255,210,0,0.55);
-      box-shadow: 0 0 20px rgba(255,210,0,0.35), 0 0 40px rgba(255,210,0,0.15);
-    }
-
-    /* A — зелёный */
-    .tier-badge.a {
-      background: rgba(50,220,100,0.10);
-      color: #32dc64;
-      border: 2px solid rgba(50,220,100,0.45);
-      box-shadow: 0 0 14px rgba(50,220,100,0.25), 0 0 28px rgba(50,220,100,0.10);
-    }
-
-    /* B — жёлтый */
-    .tier-badge.b {
-      background: rgba(255,240,80,0.10);
-      color: #fff050;
-      border: 2px solid rgba(255,240,80,0.40);
-      box-shadow: 0 0 12px rgba(255,240,80,0.20), 0 0 24px rgba(255,240,80,0.08);
-    }
-
-    /* C — оранжевый */
-    .tier-badge.c {
-      background: rgba(255,140,0,0.10);
-      color: #ff8c00;
-      border: 2px solid rgba(255,140,0,0.40);
-      box-shadow: 0 0 12px rgba(255,140,0,0.20), 0 0 24px rgba(255,140,0,0.08);
-    }
-
-    /* D — красный */
-    .tier-badge.d {
-      background: rgba(220,50,50,0.10);
-      color: #f05050;
-      border: 2px solid rgba(220,50,50,0.40);
-      box-shadow: 0 0 12px rgba(220,50,50,0.20), 0 0 24px rgba(220,50,50,0.08);
-    }
-
-    .tier-label { font-family: 'Orbitron', sans-serif; }
-
-    .tier-label strong {
-      font-size: 22px;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .tier-label span {
-      font-size: 14px;
-      color: #888;
-      letter-spacing: 0.5px;
-    }
-
-    .tier-label strong.s { color: #ffd700; text-shadow: 0 0 10px rgba(255,210,0,0.5); }
-    .tier-label strong.a { color: #32dc64; text-shadow: 0 0 8px rgba(50,220,100,0.35); }
-    .tier-label strong.b { color: #fff050; text-shadow: 0 0 8px rgba(255,240,80,0.30); }
-    .tier-label strong.c { color: #ff8c00; text-shadow: 0 0 8px rgba(255,140,0,0.30); }
-    .tier-label strong.d { color: #f05050; text-shadow: 0 0 8px rgba(220,50,50,0.30); }
-
-    .tier-divider {
-      height: 1px;
-      background: linear-gradient(to right, rgba(255,141,179,0.25), transparent);
-      margin-bottom: 18px;
-    }
-
-    /* КАРТОЧКИ */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
+      gap: 18px;
+      padding: 10px 20px 40px;
     }
 
     .card {
-      background: linear-gradient(145deg, rgba(30,15,18,0.84), rgba(12,8,8,0.72));
+      background: linear-gradient(
+        145deg,
+        rgba(5,18,20,0.82),
+        rgba(0,0,0,0.72)
+      );
+      border: 1px solid rgba(99,255,242,0.35);
       border-radius: 14px;
-      padding: 22px 24px;
+      padding: 20px;
+      box-shadow: 0 0 18px rgba(99,255,242,0.08);
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.4s ease forwards;
+      transform: translateX(-60px);
+      animation: slideIn 0.5s ease forwards;
     }
 
-    .card.s { border: 1px solid rgba(255,210,0,0.35); box-shadow: 0 0 16px rgba(255,210,0,0.07); }
-    .card.a { border: 1px solid rgba(50,220,100,0.30); box-shadow: 0 0 16px rgba(50,220,100,0.06); }
-    .card.b { border: 1px solid rgba(255,240,80,0.30); box-shadow: 0 0 16px rgba(255,240,80,0.06); }
-    .card.c { border: 1px solid rgba(255,140,0,0.30); box-shadow: 0 0 16px rgba(255,140,0,0.06); }
-    .card.d { border: 1px solid rgba(220,50,50,0.30); box-shadow: 0 0 16px rgba(220,50,50,0.06); }
+    .card:nth-child(1) { animation-delay: 0.15s; }
+    .card:nth-child(2) { animation-delay: 0.30s; }
 
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
     }
 
-    .card h3 {
-      margin: 0 0 8px;
+    .card h2 {
+      margin: 0;
+      color: #63fff2;
       font-family: 'Orbitron', sans-serif;
-      font-size: 18px;
+      font-size: 24px;
+      text-shadow: 0 0 8px rgba(99,255,242,0.25);
     }
-
-    .card.s h3 { color: #ffd700; }
-    .card.a h3 { color: #32dc64; }
-    .card.b h3 { color: #fff050; }
-    .card.c h3 { color: #ff8c00; }
-    .card.d h3 { color: #f05050; }
 
     .card p {
-      margin: 5px 0;
-      font-size: 14px;
-      color: #b0a090;
+      margin: 7px 0;
+      color: #dffefe;
+      font-size: 15px;
     }
 
-    .card-tag {
+    .tag {
       display: inline-block;
-      margin-top: 12px;
-      padding: 5px 12px;
-      border-radius: 6px;
+      margin-top: 10px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(99,255,242,0.55);
+      color: #63fff2;
       font-size: 12px;
+      background: rgba(0,255,220,0.05);
     }
-
-    .card.s .card-tag { color: #ffd700; border: 1px solid rgba(255,210,0,0.4); background: rgba(255,210,0,0.05); }
-    .card.a .card-tag { color: #32dc64; border: 1px solid rgba(50,220,100,0.4); background: rgba(50,220,100,0.05); }
-    .card.b .card-tag { color: #fff050; border: 1px solid rgba(255,240,80,0.4); background: rgba(255,240,80,0.05); }
-    .card.c .card-tag { color: #ff8c00; border: 1px solid rgba(255,140,0,0.4); background: rgba(255,140,0,0.05); }
-    .card.d .card-tag { color: #f05050; border: 1px solid rgba(220,50,50,0.4); background: rgba(220,50,50,0.05); }
   </style>
 </head>
+
 <body>
 
 <div class="bg"></div>
@@ -368,120 +268,22 @@
   </nav>
 </header>
 
-<div class="page-title">Tier List</div>
+<h1>Builds</h1>
 
 <div class="container">
 
-  <!-- S TIER -->
-  <div class="tier-group">
-    <div class="tier-header">
-      <div class="tier-badge s">S</div>
-      <div class="tier-label">
-        <strong class="s">S Tier — Prime Time</strong>
-        <span>Meta-defining. The strongest picks in the game.</span>
-      </div>
-    </div>
-    <div class="tier-divider"></div>
-    <div class="cards-grid">
-      <div class="card s">
-        <h3>Dust Reaper</h3>
-        <p>Weapon: Repeater Rifle</p>
-        <p>Playstyle: Mid-range burst damage</p>
-        <span class="card-tag">Top Meta</span>
-      </div>
-      <div class="card s">
-        <h3>Iron Judge</h3>
-        <p>Weapon: Lever-Action Shotgun</p>
-        <p>Playstyle: Close-range devastation</p>
-        <span class="card-tag">Top Meta</span>
-      </div>
-    </div>
+  <div class="card">
+    <h2>Dust Reaper</h2>
+    <p>Weapon: Repeater Rifle</p>
+    <p>Playstyle: Mid-range burst damage</p>
+    <span class="tag">Tier: S</span>
   </div>
 
-  <!-- A TIER -->
-  <div class="tier-group">
-    <div class="tier-header">
-      <div class="tier-badge a">A</div>
-      <div class="tier-label">
-        <strong class="a">A Tier — Strong Picks</strong>
-        <span>Reliable and powerful builds for most encounters.</span>
-      </div>
-    </div>
-    <div class="tier-divider"></div>
-    <div class="cards-grid">
-      <div class="card a">
-        <h3>Gunslinger</h3>
-        <p>Weapon: Dual Revolvers</p>
-        <p>Playstyle: Fast close combat DPS</p>
-        <span class="card-tag">Strong Choice</span>
-      </div>
-      <div class="card a">
-        <h3>Prairie Ghost</h3>
-        <p>Weapon: Silenced Pistol</p>
-        <p>Playstyle: Stealth and mobility</p>
-        <span class="card-tag">Strong Choice</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- B TIER -->
-  <div class="tier-group">
-    <div class="tier-header">
-      <div class="tier-badge b">B</div>
-      <div class="tier-label">
-        <strong class="b">B Tier — Good Picks</strong>
-        <span>Solid options for specific tasks.</span>
-      </div>
-    </div>
-    <div class="tier-divider"></div>
-    <div class="cards-grid">
-      <div class="card b">
-        <h3>Drifter</h3>
-        <p>Weapon: Bolt-Action Rifle</p>
-        <p>Playstyle: Long-range sniper</p>
-        <span class="card-tag">Balanced</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- C TIER -->
-  <div class="tier-group">
-    <div class="tier-header">
-      <div class="tier-badge c">C</div>
-      <div class="tier-label">
-        <strong class="c">C Tier — Average Picks</strong>
-        <span>Situational, only useful in specific conditions.</span>
-      </div>
-    </div>
-    <div class="tier-divider"></div>
-    <div class="cards-grid">
-      <div class="card c">
-        <h3>Rustbucket</h3>
-        <p>Weapon: Old Revolver</p>
-        <p>Playstyle: Budget early-game</p>
-        <span class="card-tag">Situational</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- D TIER -->
-  <div class="tier-group">
-    <div class="tier-header">
-      <div class="tier-badge d">D</div>
-      <div class="tier-label">
-        <strong class="d">D Tier — Weak Picks</strong>
-        <span>On the weak side. Possible niche applications only.</span>
-      </div>
-    </div>
-    <div class="tier-divider"></div>
-    <div class="cards-grid">
-      <div class="card d">
-        <h3>Tumbleweed</h3>
-        <p>Weapon: Broken Musket</p>
-        <p>Playstyle: Meme builds only</p>
-        <span class="card-tag">Avoid</span>
-      </div>
-    </div>
+  <div class="card">
+    <h2>Gunslinger</h2>
+    <p>Weapon: Dual Revolvers</p>
+    <p>Playstyle: Fast close combat DPS</p>
+    <span class="tag">Tier: A</span>
   </div>
 
 </div>
@@ -572,5 +374,6 @@
     if (input.value.trim()) renderDropdown(input.value);
   });
 </script>
+
 </body>
 </html>
